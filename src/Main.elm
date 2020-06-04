@@ -1,29 +1,32 @@
 module Main exposing (..)
 import Browser
-import Html exposing (Html, button, div, text, Attribute, div, input)
+import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
+import Styles exposing (..)
 
 
 main = 
     Browser.sandbox { init = init, update = update, view = view }
 
-type alias Model = String
+type alias Model = 
+    { head : String
+    , content : String
+    }
 
 init : Model
 init =
-    "Hello World"
+    Model "Welcome to kino.ma" "Hello, this is kino.ma home page."
 
-type Msg = Update
+type alias Msg = ()
 
 update : Msg -> Model -> Model
-update msg model =
-    "!" ++ model ++ "!"
+update _ model = model
 
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ div [] [ text model ]
-        , div [] [ button [ onClick Update ] [ text "update" ] ]
+    div baseStyle
+        [ h1 headerStyle [ text model.head ]
+        , div mainStyle
+             [ p [] [ text model.content ] ]
         ]
