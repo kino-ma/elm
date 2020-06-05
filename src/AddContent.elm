@@ -56,6 +56,8 @@ view model =
             [ button [ onClick Front ] [ text "add to front" ]
             , button [ onClick Lear ] [ text "add to lear" ]
             , button [ onClick Both ] [ text "both!"  ]
-            , button [ onClick Reset ] [ text "reset result content" ]
+            ]
+        , div (mainStyle ++ [])
+            [ button [ onClick Reset ] [ text "reset result content" ]
             ]
         ]
