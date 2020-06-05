@@ -4,7 +4,7 @@ SRC = src
 PAGEDIR = pages
 
 
-default: main add_cntent
+default: main add_content
 
 main:
 	$(MAKE) $(SRC)/Main.elm $(OUT)=$(PAGEDIR)/index.html
