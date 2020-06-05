@@ -3,9 +3,10 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
+import Styles exposing (..)
 
 
-main = 
+main =
     Browser.sandbox { init = init, update = update, view = view }
 
 type alias Model = 
@@ -16,7 +17,7 @@ type alias Model =
 
 init : Model
 init =
-    Model "" "" ""
+    Model "" "" "add string to front or lear of content"
 
 type Msg
     = UpdateContent String
@@ -30,7 +31,7 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         UpdateContent str ->
-            { model | content = str, result = model.content }
+            { model | content = str, result = str }
         UpdateSub str ->
             { model | sub = str }
         Front ->
@@ -46,11 +47,13 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ div [ style "display" "block", style "height" "1em" ] [ text model.result ]
-        , div []
+        [ h1 (headerStyle ++ [ style "height" "1em" ]) [ text model.result ]
+        , div (mainStyle ++ [])
             [ input [ type_ "text", placeholder "main content", value model.content, onInput UpdateContent ] []
             , input [ type_ "text", placeholder "add string",   value model.sub,     onInput UpdateSub     ] []
-            , button [ onClick Front ] [ text "add to front" ]
+            ]
+        , div (mainStyle ++ [])
+            [ button [ onClick Front ] [ text "add to front" ]
             , button [ onClick Lear ] [ text "add to lear" ]
             , button [ onClick Both ] [ text "both!"  ]
             , button [ onClick Reset ] [ text "reset result content" ]
