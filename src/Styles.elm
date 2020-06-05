@@ -1,23 +1,23 @@
 module Styles exposing (..)
 import Html.Attributes exposing (..)
 
-baseStyle_ = 
+baseStyle = generateStyle
     [ ("margin", "1em")
+    , ("display", "block")
     ]
 
-headerStyle_ =
-    baseStyle_ ++
-    [
+headerStyle = baseStyle ++ generateStyle
+    [ ("text-align", "center")
     ]
 
-mainStyle_ = 
-    baseStyle_ ++
+mainStyle = baseStyle ++ generateStyle
     [ ("colour", "#F0F0F0")
+    , ("text-align", "center")
     ]
 
-baseStyle = generateStyle baseStyle_
-headerStyle = generateStyle headerStyle_
-mainStyle = generateStyle mainStyle_
+-- baseStyle = generateStyle baseStyle_
+-- headerStyle = generateStyle headerStyle_
+-- mainStyle = generateStyle mainStyle_
 
 
 generateStyle l = 
