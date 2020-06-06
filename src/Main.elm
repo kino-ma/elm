@@ -51,7 +51,7 @@ view model =
             ]
         , div (mainStyle ++ [])
             [ a (subStyle ++ [ href "https://kino.ma"]) [ text "Twitter" ]
-            , a (subStyle ++ [ href "https://mastodon.kino.ma" ]) [ text "Mastodon" ]
+            , a (subStyle ++ [ href "https://mastodon.kino.ma/@makino" ]) [ text "Mastodon" ]
             , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "Github" ]
             ]
         , div (mainStyle ++ [])
