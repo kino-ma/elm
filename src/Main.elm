@@ -27,6 +27,15 @@ view : Model -> Html Msg
 view model =
     div baseStyle
         [ h1 headerStyle [ text model.head ]
-        , div mainStyle
-             [ p [] [ text model.content ] ]
+        , div (mainStyle ++ [])
+            [ p [] [ text model.content ]
+            ]
+        , div (mainStyle ++ [])
+            [ a (subStyle ++ [ href "https://kino.ma"]) [ text "Twitter" ]
+            , a (subStyle ++ [ href "https://mastodon.kino.ma" ]) [ text "Mastodon" ]
+            , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "Github" ]
+            ]
+        , div (mainStyle ++ [])
+            [ a [ href "https://github.com/kino-ma/elm-web" ] [ text "page source" ]
+            ]
         ]

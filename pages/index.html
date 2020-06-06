@@ -5182,6 +5182,7 @@ var $author$project$Main$update = F2(
 	function (_v0, model) {
 		return model;
 	});
+var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Styles$generateStyle = function (l) {
@@ -5213,6 +5214,20 @@ var $author$project$Styles$headerStyle = _Utils_ap(
 			[
 				_Utils_Tuple2('text-align', 'center')
 			])));
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
 var $author$project$Styles$mainStyle = _Utils_ap(
 	$author$project$Styles$baseStyle,
 	$author$project$Styles$generateStyle(
@@ -5222,6 +5237,12 @@ var $author$project$Styles$mainStyle = _Utils_ap(
 				_Utils_Tuple2('text-align', 'center')
 			])));
 var $elm$html$Html$p = _VirtualDom_node('p');
+var $author$project$Styles$subStyle = $author$project$Styles$generateStyle(
+	_List_fromArray(
+		[
+			_Utils_Tuple2('display', 'inline'),
+			_Utils_Tuple2('margin', '0.5em')
+		]));
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$view = function (model) {
@@ -5239,7 +5260,7 @@ var $author$project$Main$view = function (model) {
 					])),
 				A2(
 				$elm$html$Html$div,
-				$author$project$Styles$mainStyle,
+				_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
 				_List_fromArray(
 					[
 						A2(
@@ -5248,6 +5269,64 @@ var $author$project$Main$view = function (model) {
 						_List_fromArray(
 							[
 								$elm$html$Html$text(model.M)
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							$author$project$Styles$subStyle,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('https://kino.ma')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Twitter')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							$author$project$Styles$subStyle,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('https://mastodon.kino.ma')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Mastodon')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_Utils_ap(
+							$author$project$Styles$subStyle,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$href('https://github.com/kino-ma')
+								])),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Github')
+							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$href('https://github.com/kino-ma/elm-web')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('page source')
 							]))
 					]))
 			]));

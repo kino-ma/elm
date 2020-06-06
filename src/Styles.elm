@@ -15,6 +15,11 @@ mainStyle = baseStyle ++ generateStyle
     , ("text-align", "center")
     ]
 
+subStyle = generateStyle
+    [ ("display", "inline")
+    , ("margin", "0.5em")
+    ]
+
 -- baseStyle = generateStyle baseStyle_
 -- headerStyle = generateStyle headerStyle_
 -- mainStyle = generateStyle mainStyle_
