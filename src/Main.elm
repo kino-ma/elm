@@ -27,13 +27,16 @@ init _ =
     )
 
 
+
 subs _ = Sub.none
+
+
 
 type alias Msg = ()
 
-
 update : Msg -> Model -> (Model, Cmd Msg)
 update _ model = (model, Cmd.none)
+
 
 
 type alias Document msg = 
