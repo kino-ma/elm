@@ -6,26 +6,45 @@ import Styles exposing (..)
 
 
 main = 
-    Browser.sandbox { init = init, update = update, view = view }
+    Browser.document
+    { init = init
+    , subscriptions = subs
+    , update = update
+    , view = view
+    }
+
+
 
 type alias Model = 
     { head : String
     , content : String
     }
 
-init : Model
-init =
-    Model "Welcome to kino.ma" "Hello, this is kino.ma home page."
+init : () -> (Model, Cmd Msg)
+init _ =
+    ( Model "Welcome to kino.ma" "Hello, this is kino.ma home page."
+    , Cmd.none
+    )
+
+
+subs _ = Sub.none
 
 type alias Msg = ()
 
-update : Msg -> Model -> Model
-update _ model = model
+
+update : Msg -> Model -> (Model, Cmd Msg)
+update _ model = (model, Cmd.none)
 
 
-view : Model -> Html Msg
+type alias Document msg = 
+    { title : String
+    , body : List (Html msg)
+    }
+
+view : Model -> Document Msg
 view model =
-    div baseStyle
+    Document "Welcome to kino.ma"
+    [ div baseStyle
         [ h1 headerStyle [ text model.head ]
         , div (mainStyle ++ [])
             [ p [] [ text model.content ]
@@ -39,3 +58,4 @@ view model =
             [ a [ href "https://github.com/kino-ma/elm-web" ] [ text "page source" ]
             ]
         ]
+    ]

@@ -4369,11 +4369,6 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $author$project$Main$Model = F2(
-	function (head, content) {
-		return {M: content, R: head};
-	});
-var $author$project$Main$init = A2($author$project$Main$Model, 'Welcome to kino.ma', 'Hello, this is kino.ma home page.');
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
@@ -5156,31 +5151,30 @@ var $elm$core$Task$perform = F2(
 		return $elm$core$Task$command(
 			A2($elm$core$Task$map, toMessage, task));
 	});
+var $elm$browser$Browser$document = _Browser_document;
+var $author$project$Main$Model = F2(
+	function (head, content) {
+		return {M: content, R: head};
+	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $author$project$Main$init = function (_v0) {
+	return _Utils_Tuple2(
+		A2($author$project$Main$Model, 'Welcome to kino.ma', 'Hello, this is kino.ma home page.'),
+		$elm$core$Platform$Cmd$none);
+};
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
-var $elm$browser$Browser$sandbox = function (impl) {
-	return _Browser_element(
-		{
-			av: function (_v0) {
-				return _Utils_Tuple2(impl.av, $elm$core$Platform$Cmd$none);
-			},
-			aB: function (_v1) {
-				return $elm$core$Platform$Sub$none;
-			},
-			aD: F2(
-				function (msg, model) {
-					return _Utils_Tuple2(
-						A2(impl.aD, msg, model),
-						$elm$core$Platform$Cmd$none);
-				}),
-			aE: impl.aE
-		});
+var $author$project$Main$subs = function (_v0) {
+	return $elm$core$Platform$Sub$none;
 };
 var $author$project$Main$update = F2(
 	function (_v0, model) {
-		return model;
+		return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+	});
+var $author$project$Main$Document = F2(
+	function (title, body) {
+		return {ao: body, aC: title};
 	});
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
@@ -5247,92 +5241,98 @@ var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$view = function (model) {
 	return A2(
-		$elm$html$Html$div,
-		$author$project$Styles$baseStyle,
+		$author$project$Main$Document,
+		'Welcome to kino.ma',
 		_List_fromArray(
 			[
 				A2(
-				$elm$html$Html$h1,
-				$author$project$Styles$headerStyle,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(model.R)
-					])),
-				A2(
 				$elm$html$Html$div,
-				_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
+				$author$project$Styles$baseStyle,
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$p,
-						_List_Nil,
+						$elm$html$Html$h1,
+						$author$project$Styles$headerStyle,
 						_List_fromArray(
 							[
-								$elm$html$Html$text(model.M)
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$a,
-						_Utils_ap(
-							$author$project$Styles$subStyle,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://kino.ma')
-								])),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Twitter')
+								$elm$html$Html$text(model.R)
 							])),
 						A2(
-						$elm$html$Html$a,
-						_Utils_ap(
-							$author$project$Styles$subStyle,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://mastodon.kino.ma')
-								])),
+						$elm$html$Html$div,
+						_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('Mastodon')
+								A2(
+								$elm$html$Html$p,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text(model.M)
+									]))
 							])),
 						A2(
-						$elm$html$Html$a,
-						_Utils_ap(
-							$author$project$Styles$subStyle,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://github.com/kino-ma')
-								])),
+						$elm$html$Html$div,
+						_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('Github')
-							]))
-					])),
-				A2(
-				$elm$html$Html$div,
-				_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
-				_List_fromArray(
-					[
+								A2(
+								$elm$html$Html$a,
+								_Utils_ap(
+									$author$project$Styles$subStyle,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$href('https://kino.ma')
+										])),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Twitter')
+									])),
+								A2(
+								$elm$html$Html$a,
+								_Utils_ap(
+									$author$project$Styles$subStyle,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$href('https://mastodon.kino.ma')
+										])),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Mastodon')
+									])),
+								A2(
+								$elm$html$Html$a,
+								_Utils_ap(
+									$author$project$Styles$subStyle,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$href('https://github.com/kino-ma')
+										])),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Github')
+									]))
+							])),
 						A2(
-						$elm$html$Html$a,
+						$elm$html$Html$div,
+						_Utils_ap($author$project$Styles$mainStyle, _List_Nil),
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$href('https://github.com/kino-ma/elm-web')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('page source')
+								A2(
+								$elm$html$Html$a,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$href('https://github.com/kino-ma/elm-web')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('page source')
+									]))
 							]))
 					]))
 			]));
 };
-var $author$project$Main$main = $elm$browser$Browser$sandbox(
-	{av: $author$project$Main$init, aD: $author$project$Main$update, aE: $author$project$Main$view});
+var $author$project$Main$main = $elm$browser$Browser$document(
+	{av: $author$project$Main$init, aB: $author$project$Main$subs, aD: $author$project$Main$update, aE: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));
 
