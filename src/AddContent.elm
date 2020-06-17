@@ -17,7 +17,7 @@ type alias Model =
 
 init : Model
 init =
-    Model "" "" "add string to front or lear of content"
+    Model "" "" "add string to the start or the end of content"
 
 type Msg
     = UpdateContent String
@@ -53,8 +53,8 @@ view model =
             , input [ type_ "text", placeholder "add string",   value model.sub,     onInput UpdateSub     ] []
             ]
         , div (mainStyle ++ [])
-            [ button [ onClick Front ] [ text "add to front" ]
-            , button [ onClick Lear ] [ text "add to lear" ]
+            [ button [ onClick Front ] [ text "add to head" ]
+            , button [ onClick Lear ] [ text "add to tail" ]
             , button [ onClick Both ] [ text "both!"  ]
             ]
         , div (mainStyle ++ [])

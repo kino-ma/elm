@@ -27,16 +27,13 @@ init _ =
     )
 
 
-
 subs _ = Sub.none
-
 
 
 type alias Msg = ()
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update _ model = (model, Cmd.none)
-
 
 
 type alias Document msg = 
@@ -54,7 +51,7 @@ view model =
             ]
         , div (mainStyle ++ [])
             [ a (subStyle ++ [ href "https://kino.ma"]) [ text "Twitter" ]
-            , a (subStyle ++ [ href "https://mastodon.kino.ma/@makino" ]) [ text "Mastodon" ]
+            , a (subStyle ++ [ rel "me", href "https://mastodon.kino.ma/@makino" ]) [ text "Mastodon" ]
             , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "Github" ]
             ]
         , div (mainStyle ++ [])

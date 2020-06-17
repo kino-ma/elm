@@ -4373,7 +4373,7 @@ var $author$project$AddContent$Model = F3(
 	function (content, sub, result) {
 		return {G: content, q: result, B: sub};
 	});
-var $author$project$AddContent$init = A3($author$project$AddContent$Model, '', '', 'add string to front or lear of content');
+var $author$project$AddContent$init = A3($author$project$AddContent$Model, '', '', 'add string to the start or the end of content');
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
@@ -5389,7 +5389,7 @@ var $author$project$AddContent$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('add to front')
+								$elm$html$Html$text('add to head')
 							])),
 						A2(
 						$elm$html$Html$button,
@@ -5399,7 +5399,7 @@ var $author$project$AddContent$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('add to lear')
+								$elm$html$Html$text('add to tail')
 							])),
 						A2(
 						$elm$html$Html$button,
