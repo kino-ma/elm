@@ -50,9 +50,9 @@ view model =
             [ p [] [ text model.content ]
             ]
         , div (mainStyle ++ [])
-            [ a (subStyle ++ [ href "https://kino.ma"]) [ text "Twitter" ]
+            [ a (subStyle ++ [ href "https://twitter.kino.ma"]) [ text "Twitter" ]
             , a (subStyle ++ [ rel "me", href "https://mastodon.kino.ma/@makino" ]) [ text "Mastodon" ]
-            , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "Github" ]
+            , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "GitHub" ]
             ]
         , div (mainStyle ++ [])
             [ a [ href "https://github.com/kino-ma/elm-web" ] [ text "page source" ]
