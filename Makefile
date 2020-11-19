@@ -1,30 +1,27 @@
-CMD := elm make
-FLAGS := --optimize
-OUT := --output
-SRCDIR := src
-SRCS := $(wildcard $(SRCDIR)/*)
-SEDCMD = sed -r 's_^[^/]+/([^.]+)\.html_\1_g; s/(^|_)(.)/\U\2\E/g;' | tee hoge.txt
-GETNAME = echo $@ | tee hoge1.txt | $(SEDCMD)
-PAGEDIR := pages
-TARGETS := $(PAGEDIR)/index.html $(PAGEDIR)/add_content.html
+ELM_FLAGS :=
+SRC_DIR := src
+ELM_SRCS := $(wildcard $(SRC_DIR)/*)
+OUT_DIR := pages
+TARGETS := $(OUT_DIR)/index.html $(OUT_DIR)/add_content.html
+
+ifdef RELEASE
+	ELM_FLAGS += --optimize
+endif
 
 
-
-default: $(TARGETS)
-
-force:
-	$(MAKE) -B
-
-$(PAGEDIR)/index.html: $(SRCDIR)/Main.elm
-	$(CMD) $(FLAGS) $< $(OUT)=$@
-
-$(PAGEDIR)/add_content.html: $(SRCDIR)/AddContent.elm
-	$(CMD) $(FLAGS) $< $(OUT)=$@
+default: all
 
 
-.PHONY: default
+$(OUT_DIR)/index.html: $(SRC_DIR)/Main.elm
+	elm make $(ELM_FLAGS) $< --output=$@
+
+$(OUT_DIR)/add_content.html: $(SRC_DIR)/AddContent.elm
+	elm make $(ELM_FLAGS) $< --output=$@
 
 
+all: $(TARGETS)
 
-$(PAGEDIR)/_.html: $(SRCDIR)/_.elm
-	$(CMD) $(FLAGS) $< $(OUT)=$@
+clean:
+	rm -rf $(TARGETS)
+
+.PHONY: default all release clean
