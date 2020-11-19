@@ -6,7 +6,7 @@ name: CI
 # events but only for the develop branch
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,7 +18,7 @@ jobs:
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       SSH_USER: ${{ secrets.SSH_USER }}
-      SSH_ADDR: ${{ secrets.SSH_ADDR }}
+      SSH_ADDR: ${{ secrets.SSH_HOST }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
