@@ -5,6 +5,7 @@ import Html.Attributes exposing (..)
 import Styles exposing (..)
 
 
+main : Program () Model Msg
 main = 
     Browser.document
     { init = init
@@ -27,6 +28,7 @@ init _ =
     )
 
 
+subs : a -> Sub msg
 subs _ = Sub.none
 
 
