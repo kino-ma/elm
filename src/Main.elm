@@ -1,34 +1,38 @@
 module Main exposing (..)
+
 import Browser
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Html)
+-- import Html.Attributes exposing (..)
+
+import Element exposing (Element, Attribute, link, text, el, column, row)
+
+import Element.Background as Background
+import Element.Border as Border
+import Element.Region as Region
+import Element.Font as Font
+
 import Styles
 
-
-main : Program () Model Msg
 main = 
     Browser.document
-    { init = init
-    , subscriptions = subs
-    , update = update
-    , view = view
-    }
+        { init = init
+        , subscriptions = subs
+        , update = update
+        , view = view
+        }
 
 
+type Model = 
+    Nop
 
-type alias Model = 
-    { head : String
-    , content : String
-    }
 
 init : () -> (Model, Cmd Msg)
 init _ =
-    ( Model "Welcome to kino.ma" "Hello, this is kino.ma home page."
+    ( Nop
     , Cmd.none
     )
 
 
-subs : a -> Sub msg
 subs _ = Sub.none
 
 
@@ -43,33 +47,47 @@ type alias Document msg =
     , body : List (Html msg)
     }
 
-view : Model -> Document Msg
-view model =
-    Document "Welcome to kino.ma"
-    [ div Styles.baseStyle
-        [ h1 Styles.headerStyle [ text model.head ]
-        , mainDiv
-            [ p [] [ text model.content ]
-            ]
-        , mainDiv
-            [ meA "https://twitter.kino.ma" "Twitter " []
-            , meA "https://mastodon.kino.ma/@makino" "Mastodon " [rel "me"]
-            , meA "https://github.com/kino-ma" "Github" []
-            ]
-        , mainDiv
-            [ a [ href "https://github.com/kino-ma/elm-web" ] [ text "page source" ]
-            ]
+view _ =
+    Document "Welcome to kino.ma" <|
+        [ Element.layout [] <|
+            column [] <|
+                [ el [ Region.heading 1 ] <|
+                    text "Welcome to kino.ma"
+                , el [] <|
+                    text "Hello, this is kino.ma home page."
+                , row []
+                    [ link []
+                        { url = "https://twitter.kino.ma"
+                        , label = text "Twitter"
+                        }
+                    , link [] -- rel "me"
+                        { url = "https://mastodon.kino.ma/@makino"
+                        , label = text "Mastodon"
+                        }
+                    , link []
+                        { url = "https://github.com/kino-ma"
+                        , label = text "GitHub"
+                        }
+                    ]
+                , el [] <|
+                    link []
+                        { url = "https://github.com/kino-ma/elm-web"
+                        , label = text "page source"
+                        }
+                ]
         ]
-    ]
 
 
-meA : String -> String -> List (Attribute msg) -> Html msg
-meA url t props =
+
+{-
+meLink : List (Attribute msg) -> String -> String -> Element msg
+meLink url t props =
     let
         props_ = (href url::Styles.subStyle ++ props)
     in
-        a props_ [text t]
+        Element.link props_ [text t]
 
 mainDiv : List (Html msg) -> Html msg
-mainDiv nodes = 
+mainDiv nodes =
     div (Styles.mainStyle) nodes
+    -}
