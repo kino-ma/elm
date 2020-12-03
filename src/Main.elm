@@ -2,7 +2,7 @@ module Main exposing (..)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Styles exposing (..)
+import Styles
 
 
 main : Program () Model Msg
@@ -46,18 +46,30 @@ type alias Document msg =
 view : Model -> Document Msg
 view model =
     Document "Welcome to kino.ma"
-    [ div baseStyle
-        [ h1 headerStyle [ text model.head ]
-        , div (mainStyle ++ [])
+    [ div Styles.baseStyle
+        [ h1 Styles.headerStyle [ text model.head ]
+        , mainDiv
             [ p [] [ text model.content ]
             ]
-        , div (mainStyle ++ [])
-            [ a (subStyle ++ [ href "https://twitter.kino.ma"]) [ text "Twitter" ]
-            , a (subStyle ++ [ rel "me", href "https://mastodon.kino.ma/@makino" ]) [ text "Mastodon" ]
-            , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "GitHub" ]
+        , mainDiv
+            [ meA "https://twitter.kino.ma" "Twitter " []
+            , meA "https://mastodon.kino.ma/@makino" "Mastodon " [rel "me"]
+            , meA "https://github.com/kino-ma" "Github" []
             ]
-        , div (mainStyle ++ [])
+        , mainDiv
             [ a [ href "https://github.com/kino-ma/elm-web" ] [ text "page source" ]
             ]
         ]
     ]
+
+
+meA : String -> String -> List (Attribute msg) -> Html msg
+meA url t props =
+    let
+        props_ = (href url::Styles.subStyle ++ props)
+    in
+        a props_ [text t]
+
+mainDiv : List (Html msg) -> Html msg
+mainDiv nodes = 
+    div (Styles.mainStyle) nodes
