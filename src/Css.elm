@@ -44,6 +44,9 @@ class : Css -> String -> Attribute msg
 class css name = 
     Attributes.class <| className css name
 
+plainClass : String -> Attribute msg
+plainClass = Attributes.class
+
 
 classList : Css -> List ( String, Bool ) -> Attribute msg
 classList css ls =
