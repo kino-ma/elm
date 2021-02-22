@@ -1,11 +1,12 @@
 module AddContent exposing (..)
 import Browser
 import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html.Attributes exposing (value, type_, placeholder)
 import Html.Events exposing (onInput, onClick)
-import Styles exposing (..)
+import Css exposing (..)
 
 
+main : Program () Model Msg
 main =
     Browser.sandbox { init = init, update = update, view = view }
 
@@ -47,17 +48,17 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ h1 (headerStyle ++ [ style "height" "1em" ]) [ text model.result ]
-        , div (mainStyle ++ [])
+        [ h1 [class Style "header" ] [ text model.result ]
+        , div [class Style "container"]
             [ input [ type_ "text", placeholder "main content", value model.content, onInput UpdateContent ] []
             , input [ type_ "text", placeholder "add string",   value model.sub,     onInput UpdateSub     ] []
             ]
-        , div (mainStyle ++ [])
+        , div [class Style "content"]
             [ button [ onClick Front ] [ text "add to head" ]
             , button [ onClick Lear ] [ text "add to tail" ]
             , button [ onClick Both ] [ text "both!"  ]
             ]
-        , div (mainStyle ++ [])
+        , div [class Style "content"]
             [ button [ onClick Reset ] [ text "reset result content" ]
             ]
         ]

@@ -1,3 +1,41 @@
+body {
+    font-size: 20px;
+}
+
+
+.page-header-container {
+    background-color: #F0F0F0;
+    display: flex;
+    margin: 0;
+}
+.page-header-child {
+    margin: 0.5em;
+}
+.page-header-icon {
+    height: 3rem;
+}
+
+
+.root {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    text-align: center;
+    margin: 0.5em;
+}
+
 .container {
     display: flex;
+    align-self: center;
+}
+
+.child {
+    flex-grow: 1;
+}
+
+.content {
+    margin: 1em;
 }

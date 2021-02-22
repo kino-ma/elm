@@ -1,8 +1,8 @@
 module Main exposing (..)
 import Browser
 import Html exposing (..)
-import Html.Attributes exposing (..)
-import Styles exposing (..)
+import Html.Attributes exposing (href, rel, src)
+import Css exposing (..)
 
 
 main = 
@@ -44,18 +44,27 @@ type alias Document msg =
 view : Model -> Document Msg
 view model =
     Document "Welcome to kino.ma"
-    [ div baseStyle
-        [ h1 headerStyle [ text model.head ]
-        , div (mainStyle ++ [])
+    [ header [class Style "page-header-container"]
+        [ img [src "https://www.kino.ma/favicon.ico", class Style "page-header-icon"]  []
+        , div [class Style "page-header-child" ] [ text "hoge" ]
+        ]
+    , div [class Style "root" ]
+        [ h1 [ class Style "header" ] [ text model.head ]
+        , div []
             [ p [] [ text model.content ]
             ]
-        , div (mainStyle ++ [])
-            [ a (subStyle ++ [ href "https://twitter.kino.ma"]) [ text "Twitter" ]
-            , a (subStyle ++ [ rel "me", href "https://mastodon.kino.ma/@makino" ]) [ text "Mastodon" ]
-            , a (subStyle ++ [ href "https://github.com/kino-ma" ]) [ text "GitHub" ]
+        , div [class Style "container"]
+            [ aChild "https://twitter.kino.ma" [] "Twitter"
+            , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
+            , aChild "https://github.com/kino-ma" [] "GitHub"
             ]
-        , div (mainStyle ++ [])
-            [ a [ href "https://github.com/kino-ma/elm-web" ] [ text "page source" ]
+        , div []
+            [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
             ]
         ]
     ]
+
+
+aChild : String -> List (Attribute msg) -> String -> Html msg
+aChild link atrs content =
+    a (atrs ++ [class Style "child", class Style "content",  href link ]) [ text content ]
