@@ -11,6 +11,14 @@ module.exports = {
                     cwd: elmSoruce
                 }
             }
-        }]
+        },
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'file-loader?name=[name].[ext]'
+                }
+            }
+        ]
     }
 };

@@ -1,11 +1,17 @@
 version: '3'
 
 services:
-  web:
+  app:
     build: .
+    tty: true
     volumes:
       - node_modules:/app/node_modules
+      - elm-stuff:/app/elm-stuff
       - .:/app
+    ports:
+      - "3000:3000"
 
 volumes:
   node_modules:
+
+  elm-stuff:
