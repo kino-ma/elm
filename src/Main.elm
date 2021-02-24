@@ -49,8 +49,19 @@ type Msg
 
 changeRouteTo : Maybe Route -> Model -> ( Model, Cmd Msg )
 changeRouteTo maybeRoute model =
-    -- route
-    (model, Cmd.none)
+    case maybeRoute of
+        Nothing -> 
+            updateWith Home GotHomeMsg model
+                <| Home.init 
+
+        Just Route.Home ->
+            updateWith Home GotHomeMsg model
+                <| Home.init 
+
+        Just Route.AddContent ->
+            updateWith AddContent GotAddContentMsg model
+                <| AddContent.init 
+
     
 
 update : Msg -> Model -> (Model, Cmd Msg)

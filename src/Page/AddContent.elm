@@ -20,9 +20,11 @@ type alias Model =
     , result : String
     }
 
-init : Model
+init : ( Model, Cmd Msg )
 init =
-    Model "" "" "add string to the start or the end of content"
+    ( Model "" "" "add string to the start or the end of content"
+    , Cmd.none
+    )
 
 type Msg
     = UpdateContent String

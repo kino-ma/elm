@@ -7,12 +7,17 @@ import Url
 import Css exposing (..)
 
 
-type alias Model =
-    Url.Url
+type alias Model
+    = String
 
 
-type Msg =
-    Hoge
+type alias Msg =
+    ()
+
+
+init : ( Model, Cmd Msg )
+init =
+    ( "/", Cmd.none)
 
 
 view : Model -> { title: String, content: Html msg }
@@ -23,7 +28,7 @@ view model =
             [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
             , div []
                 [ p [] [ text "Hello, this is kino.ma home page." ]
-                , p [] [ text <| "You're now at " ++ (Url.toString model) ]
+                , p [] [ text <| "You're now at " ++ model ]
                 ]
             , div [class Style "container"]
                 [ aChild "https://twitter.kino.ma" [] "Twitter"
