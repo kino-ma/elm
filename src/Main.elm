@@ -1,14 +1,18 @@
 module Main exposing (..)
 
-import Browser
+import Browser exposing (Document)
 import Browser.Navigation as Nav
 import Html exposing (..)
-import Html.Events exposing (onClick)
 import Html.Attributes exposing (href, style, rel, src)
 import Url
 import Url.Parser exposing (Parser, (</>), int, map, oneOf, s, string)
 
 import Css exposing (..)
+import Route exposing (Route)
+import Page exposing (Page)
+import Page.AddContent as AddContent
+import Page.Home as Home
+import Page.Blank as Blank
 
 
 main : Program () Model Msg
@@ -24,43 +28,58 @@ main =
 
 
 
-type alias Model = 
-    { showHumburger : Bool
-    , key : Nav.Key
-    , url : Url.Url
-    }
+type Model
+    = Redirect Nav.Key Url.Url
+    | Home Home.Model
+    | AddContent AddContent.Model
+
+
 
 init : () -> Url.Url -> Nav.Key -> (Model, Cmd Msg)
 init flags url key =
-    ( Model False key url
-    , Cmd.none
-    )
+    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect key url)
 
 
 type Msg
-    = ShowHumburger
+    = GotAddContentMsg AddContent.Msg
+    | GotHomeMsg Home.Msg
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
+
+
+changeRouteTo : Maybe Route -> Model -> ( Model, Cmd Msg )
+changeRouteTo maybeRoute model =
+    -- route
+    (model, Cmd.none)
     
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-    case msg of
-        ShowHumburger ->
-            ( {model | showHumburger = not model.showHumburger }
-            , Cmd.none)
-        LinkClicked urlRequest -> 
+    case ( msg, model ) of
+        ( GotAddContentMsg subMsg, AddContent subModel ) ->
+            AddContent.update subMsg subModel
+                |> updateWith AddContent GotAddContentMsg model
+
+        ( LinkClicked urlRequest, Redirect key _ ) -> 
             case urlRequest of
                 Browser.Internal url ->
-                    (model, Nav.pushUrl model.key (Url.toString url))
+                    (model, Nav.pushUrl key (Url.toString url))
 
                 Browser.External href ->
                     (model, Nav.load href)
 
-        UrlChanged url ->
-            ( { model | url = url }
-            , Cmd.none
-            )
+        ( UrlChanged url, _ ) ->
+            changeRouteTo (Route.fromUrl url) model
+
+        _ ->
+            (model, Cmd.none)
+
+
+updateWith : (subModel -> Model) -> (subMsg -> Msg) -> Model -> ( subModel, Cmd subMsg ) -> ( Model, Cmd Msg )
+updateWith toModel toMsg model ( subModel, subCmd ) =
+    ( toModel subModel
+    , Cmd.map toMsg subCmd
+    )
 
 
 subscriptions : Model -> Sub Msg
@@ -68,58 +87,26 @@ subscriptions _ =
     Sub.none
 
 
-type alias Document msg = 
-    { title : String
-    , body : List (Html msg)
-    }
-
 view : Model -> Document Msg
 view model =
-    { title = "Welcome to kino.ma"
-    , body = 
-        [ header [class Style "page-header-container"]
-            [ img [src "https://www.kino.ma/favicon.ico", class Style "page-header-icon" ]  []
-            , div [class Style "page-header-child" ] [ text "hoge" ]
-            , fakeLink [onClick ShowHumburger] [text "this is humburger"]
-            , hiddenMenu [] model.showHumburger
-            ]
-        , div [class Style "root" ]
-            [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
-            , div []
-                [ p [] [ text "Hello, this is kino.ma home page." ]
-                , p [] [ text <| "You're now at " ++ (Url.toString model.url) ]
-                ]
-            , div [class Style "container"]
-                [ aChild "https://twitter.kino.ma" [] "Twitter"
-                , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
-                , aChild "https://github.com/kino-ma" [] "GitHub"
-                , aChild "/hoge" [] "/hoge"
-                ]
-            , div []
-                [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
-                ]
-            ]
-        ]
-    }
+    let
+        viewPage page toMsg config =
+            let
+                { title, body } =
+                    Page.view page config
+            in
+            { title = title
+            , body = List.map (Html.map toMsg) body
+            }
+    in
+    case model of 
+        Home subModel ->
+            viewPage Page.Home GotHomeMsg
+                <| Home.view subModel
 
-
-aChild : String -> List (Attribute msg) -> String -> Html msg
-aChild link atrs content =
-    a (atrs ++ [class Style "child", class Style "content",  href link ]) [ text content ]
-
-
-hiddenMenu : List (Attribute msg) -> Bool -> Html msg
-hiddenMenu atrs show = 
-    div
-        (atrs ++ [ class Style "hidden-menu", style "display" (if show then "block" else "none") ])
-        [ a [ href "/add_content.html" ] [text "add_content"]
-        ]
-
-fakeLink : List (Attribute msg) -> List (Html msg) -> Html msg
-fakeLink atrs elem =
-    span (atrs ++
-        [ style "color" "blue"
-        , style "text-decoration" "underline"
-        , style "cursor" "pointer"
-        ])
-        <| elem
+        AddContent subModel ->
+            viewPage Page.AddContent GotAddContentMsg
+                <| AddContent.view subModel 
+        
+        _ ->
+            Page.view Page.Other Blank.view
