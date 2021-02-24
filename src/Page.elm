@@ -5,6 +5,7 @@ import Html.Attributes exposing (href, style, src)
 import Browser exposing (Document)
 
 import Css exposing (..)
+import Session exposing (..)
 
 
 type Page
@@ -34,7 +35,7 @@ hiddenMenu : List (Attribute msg) -> Bool -> Html msg
 hiddenMenu atrs show = 
     div
         (atrs ++ [ class Style "hidden-menu", style "display" (if show then "block" else "none") ])
-        [ a [ href "/add_content.html" ] [text "add_content"]
+        [ a [ href "/add_content" ] [text "add_content"]
         ]
 
 fakeLink : List (Attribute msg) -> List (Html msg) -> Html msg

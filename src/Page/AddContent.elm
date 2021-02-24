@@ -4,7 +4,9 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (value, type_, placeholder)
 import Html.Events exposing (onInput, onClick)
+
 import Css exposing (..)
+import Session exposing (Session)
 
 
 {-
@@ -15,14 +17,15 @@ main =
 
 
 type alias Model = 
-    { content : String
+    { session : Session
+    , content : String
     , sub : String
     , result : String
     }
 
-init : ( Model, Cmd Msg )
-init =
-    ( Model "" "" "add string to the start or the end of content"
+init : Session -> ( Model, Cmd Msg )
+init session =
+    ( Model session "" "" "add string to the start or the end of content"
     , Cmd.none
     )
 
@@ -75,3 +78,11 @@ view model =
             ]
         ]
     }
+
+
+toSession : Model -> Session
+toSession model =
+    let
+        { session } = model
+    in 
+    session

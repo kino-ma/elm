@@ -5,19 +5,28 @@ import Html.Attributes exposing (href, rel)
 import Url
 
 import Css exposing (..)
+import Session exposing (Session)
 
 
-type alias Model
-    = String
+type alias Model =
+    { message : String
+    , session : Session
+    }
 
 
 type alias Msg =
     ()
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( "/", Cmd.none)
+init : Session -> ( Model, Cmd Msg )
+init session =
+    let
+        model =
+            { session = session
+            , message = "/"
+            }
+    in
+    (model, Cmd.none)
 
 
 view : Model -> { title: String, content: Html msg }
@@ -28,7 +37,7 @@ view model =
             [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
             , div []
                 [ p [] [ text "Hello, this is kino.ma home page." ]
-                , p [] [ text <| "You're now at " ++ model ]
+                , p [] [ text <| "You're now at " ++ model.message ]
                 ]
             , div [class Style "container"]
                 [ aChild "https://twitter.kino.ma" [] "Twitter"
@@ -46,3 +55,8 @@ view model =
 aChild : String -> List (Attribute msg) -> String -> Html msg
 aChild link atrs content =
     a (atrs ++ [class Style "child", class Style "content",  href link ]) [ text content ]
+
+
+toSession : Model -> Session
+toSession model =
+    model.session

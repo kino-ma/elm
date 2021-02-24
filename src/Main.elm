@@ -1,5 +1,6 @@
 module Main exposing (..)
 
+import Debug exposing (log)
 import Browser exposing (Document)
 import Browser.Navigation as Nav
 import Html exposing (..)
@@ -9,6 +10,7 @@ import Url.Parser exposing (Parser, (</>), int, map, oneOf, s, string)
 
 import Css exposing (..)
 import Route exposing (Route)
+import Session exposing (..)
 import Page exposing (Page)
 import Page.AddContent as AddContent
 import Page.Home as Home
@@ -29,7 +31,7 @@ main =
 
 
 type Model
-    = Redirect Nav.Key Url.Url
+    = Redirect Session Url.Url
     | Home Home.Model
     | AddContent AddContent.Model
 
@@ -37,7 +39,7 @@ type Model
 
 init : () -> Url.Url -> Nav.Key -> (Model, Cmd Msg)
 init flags url key =
-    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect key url)
+    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect (Session.fromKey key) url)
 
 
 type Msg
@@ -49,41 +51,60 @@ type Msg
 
 changeRouteTo : Maybe Route -> Model -> ( Model, Cmd Msg )
 changeRouteTo maybeRoute model =
+    let
+        session = toSession model
+    in
     case maybeRoute of
-        Nothing -> 
-            updateWith Home GotHomeMsg model
-                <| Home.init 
-
         Just Route.Home ->
             updateWith Home GotHomeMsg model
-                <| Home.init 
+                <| Home.init session
 
         Just Route.AddContent ->
             updateWith AddContent GotAddContentMsg model
-                <| AddContent.init 
+                <| AddContent.init session
+
+        Nothing -> 
+            updateWith Home GotHomeMsg model
+                <| Home.init session
 
     
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
+    let
+        session = toSession model
+    in
     case ( msg, model ) of
         ( GotAddContentMsg subMsg, AddContent subModel ) ->
             AddContent.update subMsg subModel
                 |> updateWith AddContent GotAddContentMsg model
 
-        ( LinkClicked urlRequest, Redirect key _ ) -> 
+        ( LinkClicked urlRequest, _ ) -> 
             case urlRequest of
                 Browser.Internal url ->
-                    (model, Nav.pushUrl key (Url.toString url))
+                    (model, Nav.pushUrl (Session.toKey session) (log "link clicked" (Url.toString url)))
 
                 Browser.External href ->
                     (model, Nav.load href)
 
         ( UrlChanged url, _ ) ->
-            changeRouteTo (Route.fromUrl url) model
+            changeRouteTo ( log "url changed" (Route.fromUrl url) ) model
 
         _ ->
             (model, Cmd.none)
+
+
+toSession : Model -> Session
+toSession model =
+    case model of
+        Home subModel ->
+            Home.toSession subModel
+
+        AddContent subModel ->
+            AddContent.toSession subModel
+
+        Redirect session _ ->
+            session
 
 
 updateWith : (subModel -> Model) -> (subMsg -> Msg) -> Model -> ( subModel, Cmd subMsg ) -> ( Model, Cmd Msg )
@@ -119,5 +140,6 @@ view model =
             viewPage Page.AddContent GotAddContentMsg
                 <| AddContent.view subModel 
         
-        _ ->
-            Page.view Page.Other Blank.view
+        Redirect key url->
+            viewPage Page.AddContent GotAddContentMsg
+                <| Blank.view
