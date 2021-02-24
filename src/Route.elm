@@ -1,6 +1,5 @@
 module Route exposing (..)
 
-import Debug exposing (log)
 import Url exposing (Url)
 import Url.Parser as Parser exposing (Parser, (</>), int, map, oneOf, s, string)
 import Html exposing (Attribute)

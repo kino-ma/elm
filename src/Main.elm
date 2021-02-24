@@ -1,6 +1,5 @@
 module Main exposing (..)
 
-import Debug exposing (log)
 import Browser exposing (Document)
 import Browser.Navigation as Nav
 import Html exposing (..)
@@ -39,7 +38,7 @@ type Model
 
 init : () -> Url.Url -> Nav.Key -> (Model, Cmd Msg)
 init flags url key =
-    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect (Session.fromKey key) (log "init url: " url))
+    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect (Session.fromKey key) url)
 
 
 type Msg
@@ -54,7 +53,7 @@ changeRouteTo maybeRoute model =
     let
         session = toSession model
     in
-    case (log "route: " maybeRoute) of
+    case maybeRoute of
         Just Route.Home ->
             updateWith Home GotHomeMsg model
                 <| Home.init session
@@ -82,16 +81,16 @@ update msg model =
         ( LinkClicked urlRequest, _ ) -> 
             case urlRequest of
                 Browser.Internal url ->
-                    (model, Nav.pushUrl (Session.toKey session) (log "link clicked" (Url.toString url)))
+                    (model, Nav.pushUrl (Session.toKey session) (Url.toString url))
 
                 Browser.External href ->
                     (model, Nav.load href)
 
         ( UrlChanged url, _ ) ->
             let
-                url_ = log "fromUrl called: " <| Route.fromUrl url
+                url_ = Route.fromUrl url
             in
-            changeRouteTo ( log "url changed" url_ ) model
+            changeRouteTo url_ model
 
         _ ->
             (model, Cmd.none)
