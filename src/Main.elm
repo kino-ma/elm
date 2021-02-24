@@ -39,7 +39,7 @@ type Model
 
 init : () -> Url.Url -> Nav.Key -> (Model, Cmd Msg)
 init flags url key =
-    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect (Session.fromKey key) url)
+    (changeRouteTo <| (Route.fromUrl url)) <| (Redirect (Session.fromKey key) (log "init url: " url))
 
 
 type Msg
@@ -54,7 +54,7 @@ changeRouteTo maybeRoute model =
     let
         session = toSession model
     in
-    case maybeRoute of
+    case (log "route: " maybeRoute) of
         Just Route.Home ->
             updateWith Home GotHomeMsg model
                 <| Home.init session
@@ -88,7 +88,10 @@ update msg model =
                     (model, Nav.load href)
 
         ( UrlChanged url, _ ) ->
-            changeRouteTo ( log "url changed" (Route.fromUrl url) ) model
+            let
+                url_ = log "fromUrl called: " <| Route.fromUrl url
+            in
+            changeRouteTo ( log "url changed" url_ ) model
 
         _ ->
             (model, Cmd.none)
