@@ -6,4 +6,4 @@ COPY ./package*.json /app/
 
 RUN yarn install 
 
-CMD npm run build
+CMD yarn run build
