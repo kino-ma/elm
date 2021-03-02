@@ -9,7 +9,7 @@ services:
       - elm-stuff:/app/elm-stuff
       - .:/app
     ports:
-      - "3300:3000"
+      - "3001:3001"
 
 volumes:
   node_modules:
