@@ -62,9 +62,9 @@ update msg model =
 view : Model -> { title: String, content: Html Msg }
 view model =
     { title = ""
-    , content = div []
+    , content = div [ class Style "root" ]
         [ h1 [class Style "header" ] [ text model.result ]
-        , div [class Style "container"]
+        , div [ class Style "container" ]
             [ input [ type_ "text", placeholder "main content", value model.content, onInput UpdateContent ] []
             , input [ type_ "text", placeholder "add string",   value model.sub,     onInput UpdateSub     ] []
             ]
