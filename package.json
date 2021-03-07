@@ -8,6 +8,7 @@
   "dependencies": {
     "css-loader": "^5.0.2",
     "elm": "^0.19.1-5",
+    "elm-hot-webpack-loader": "^1.1.8",
     "elm-webpack-loader": "^7.0.1",
     "file-loader": "1.1.10",
     "loader-utils": "1.1.0",
@@ -19,7 +20,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
-    "dev": "webpack serve --host 0.0.0.0 --inline --mode development --port 3001 --watch-content-base",
+    "dev": "webpack serve --mode development",
     "errors": "webpack --mode development --display-error-details"
   }
 }

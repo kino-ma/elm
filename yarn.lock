@@ -910,6 +910,18 @@ electron-to-chromium@^1.3.649:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.671.tgz#8feaed6eae42d279fa4611f58c42a5a1eb81b2a0"
   integrity sha512-RTD97QkdrJKaKwRv9h/wGAaoR2lGxNXEcBXS31vjitgTPwTWAbLdS7cEsBK68eEQy7p6YyT8D5BxBEYHu2SuwQ==
 
+elm-hot-webpack-loader@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/elm-hot-webpack-loader/-/elm-hot-webpack-loader-1.1.8.tgz#6da8ad069a151c3c74f93b87af84b4ca3ccb49cc"
+  integrity sha512-QXggtyhzeg7ioV8Ujoc6elFY+QYr49hFEb5EDcZP7976w62vjfqFX8YTa73alA+ayLT00ZsIU6eFjAzvLUzF0g==
+  dependencies:
+    elm-hot "^1.1.6"
+
+elm-hot@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/elm-hot/-/elm-hot-1.1.6.tgz#93e3962b40670e65f0a3640951b3add2702bfd0e"
+  integrity sha512-zYZJlfs7Gt4BdjA+D+857K+XAWzwwySJmXCgFpHW1dIEfaHSZCIPYPf7/jinZBLfKRkOAlKzI32AA84DY50g7Q==
+
 elm-webpack-loader@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/elm-webpack-loader/-/elm-webpack-loader-7.0.1.tgz#7266d94466478e2f791fc6233a8c224480d8eab3"
