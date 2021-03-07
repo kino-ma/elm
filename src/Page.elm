@@ -59,4 +59,4 @@ viewFooter : Html msg
 viewFooter = 
     footer
         [ class Style "page-footer-container" ]
-        [ small [] [ text "footer" ] ]
+        [ small [ class Style "page-footer-child" ] [ text "footer" ] ]

@@ -37,13 +37,11 @@ view model =
             [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
             , div []
                 [ p [] [ text "Hello, this is kino.ma home page." ]
-                , p [] [ text <| "You're now at " ++ model.message ]
                 ]
             , div [class Style "container"]
                 [ aChild "https://twitter.kino.ma" [] "Twitter"
                 , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
                 , aChild "https://github.com/kino-ma" [] "GitHub"
-                , aChild "/hoge" [] "/hoge"
                 ]
             , div [class Style "container"]
                 [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
