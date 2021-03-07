@@ -45,7 +45,7 @@ view model =
                 , aChild "https://github.com/kino-ma" [] "GitHub"
                 , aChild "/hoge" [] "/hoge"
                 ]
-            , div []
+            , div [class Style "container"]
                 [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
                 ]
             ]

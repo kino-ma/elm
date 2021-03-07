@@ -9,12 +9,13 @@ body {
     display: flex;
     align-items: center; /* align children to vertically center if there is empty space */
     margin: 0;
+    width: 100%;
 }
 .page-header-child {
     margin: 0.5em;
 }
 .page-header-logo {
-    height: 3rem;
+    height: 2rem;
     padding: 0;
     margin: 0;
 }
@@ -47,4 +48,9 @@ body {
 
 .content {
     margin: 1em;
+}
+
+.page-footer-container {
+    background-color: #F0F0F0;
+    text-align: center;
 }

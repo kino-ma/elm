@@ -28,7 +28,7 @@ viewHeader =
         [ class Style "page-header-container" ]
         [ logo
         , headerMenuLink [] None [ text "MENU " ]
-        , hiddenMenu [] True
+        , hiddenMenu []
         ]
 
 
@@ -47,12 +47,12 @@ logo =
 
 
 
-hiddenMenu : List (Attribute msg) -> Bool -> Html msg
-hiddenMenu atrs show = 
-    div
-        (atrs ++ [ class Style "hidden-menu", style "display" (if show then "block" else "none") ])
-        [ headerMenuLink [] Route.AddContent [text "add_content"]
-        ]
+hiddenMenu : List (Attribute msg) -> Html msg
+hiddenMenu atrs = 
+    headerMenuLink
+        (atrs ++ [ class Style "hidden-menu" ])
+        Route.AddContent
+        [ text "add_content" ]
 
 
 viewFooter : Html msg
