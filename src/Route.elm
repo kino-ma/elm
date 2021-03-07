@@ -5,9 +5,11 @@ import Url.Parser as Parser exposing (Parser, (</>), int, map, oneOf, s, string)
 import Html exposing (Attribute)
 import Html.Attributes as Attr
 
+
 type Route 
     = Home
     | AddContent
+    | None
 
 
 parser : Parser (Route -> a) a
@@ -37,7 +39,10 @@ routeToPieces : Route -> List String
 routeToPieces page =
     case page of
         Home ->
-            []
+            [ "/" ]
 
         AddContent ->
             [ "add_content" ]
+
+        None ->
+            []

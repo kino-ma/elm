@@ -62,6 +62,9 @@ changeRouteTo maybeRoute model =
             updateWith AddContent GotAddContentMsg model
                 <| AddContent.init session
 
+        Just Route.None ->
+            (model, Cmd.none)
+
         Nothing -> 
             updateWith Home GotHomeMsg model
                 <| Home.init session
