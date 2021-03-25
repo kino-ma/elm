@@ -22,5 +22,9 @@
     "watch": "webpack --mode development --watch",
     "dev": "webpack serve --mode development",
     "errors": "webpack --mode development --display-error-details"
+  },
+  "devDependencies": {
+    "html-loader": "^2.1.1",
+    "html-webpack-plugin": "^5.3.0"
   }
 }
