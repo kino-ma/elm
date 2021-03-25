@@ -3,3 +3,4 @@ package-lock.json
 pages/*.html
 dist
 node_modules
+models.json
