@@ -19,7 +19,7 @@ type Page
 view : Page -> { title : String, content : Html msg } -> Document msg
 view page { title, content } =
     { title = title
-    , body = [ viewHeader, content, viewFooter ]
+    , body = [ content ]
     }
 
 viewHeader : Html msg
