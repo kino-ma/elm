@@ -11,12 +11,14 @@ endif
 
 default: all
 
+build:
+	yarn run build
 
 $(OUT_DIR)/index.html: $(SRC_DIR)/Main.elm
-	elm make $(ELM_FLAGS) $< --output=$@
+	npx elm make $(ELM_FLAGS) $< --output=$@
 
 $(OUT_DIR)/add_content.html: $(SRC_DIR)/AddContent.elm
-	elm make $(ELM_FLAGS) $< --output=$@
+	npx elm make $(ELM_FLAGS) $< --output=$@
 
 
 all: $(TARGETS)
