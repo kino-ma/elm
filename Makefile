@@ -15,7 +15,7 @@ build:
 	yarn run build
 
 dev-server:
-	dcp run -p 3001:3001 app yarn dev
+	docker-compose run -p 3001:3001 app yarn dev
 
 $(OUT_DIR)/index.html: $(SRC_DIR)/Main.elm
 	npx elm make $(ELM_FLAGS) $< --output=$@
