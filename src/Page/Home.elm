@@ -40,15 +40,17 @@ view model =
                 ]
                 , div [ class Style "card-tile-base"]
                     [ cardTile [] (text "Links")
-                        [ aChild "https://twitter.kino.ma" [] "Twitter"
-                        , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
-                        , aChild "https://github.com/kino-ma" [] "GitHub"
+                        [ ul [ class Style "me-link-list" ]
+                            [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
+                            , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
+                            , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
+                            ]
                         ]
                     , cardTile [] (text "About")
-                        [ text "慶応大学環境情報学部三年　牧野青希"
+                        [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
                         ]
                     , cardTile [] (text "Awards")
-                        [ ul []
+                        [ ul [ class Style "card-content" ]
                             [ li [] [text "Hack U SFC 2019 最優秀賞"]
                             , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
                             , li [] [text "Hack Day Online 2021 Eaglys賞"]
@@ -85,6 +87,17 @@ cardTile attrs title content =
     div
         (attrs ++ [ class Style "card-tile"])
         ((h2 [ class Style "tile-header" ] [title]) :: content)
+
+
+cardTextContent : String -> Html msg
+cardTextContent content =
+    p
+        [ class Style "card-content" ]
+        [ text content ]
+
+
+meLinkListItems =
+    li [ class Style "me-link-list-items" ]
 
 
 aChild : String -> List (Attribute msg) -> String -> Html msg
