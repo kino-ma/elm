@@ -50,6 +50,31 @@ view model =
     }
 
 
+colN : Int -> List (Attribute msg) -> List (Html msg) -> Html msg
+colN n attrs =
+    let
+        n_ =
+            if n <= 12 then
+                if n >= 1 then 
+                    n
+                else
+                    1
+            else
+                12
+        nStr = String.fromInt n_
+        cls = class Style <| "col-" ++ nStr
+    in
+        div <| cls :: attrs
+
+
+oneThirdCol : List (Html msg) -> List (Html msg) -> List (Html msg) -> List (Html msg)
+oneThirdCol colA colB colC =
+    [ colN 4 [] colA
+    , colN 8 [] colB
+    , colN 12 [] colC
+    ]
+
+
 aChild : String -> List (Attribute msg) -> String -> Html msg
 aChild link atrs content =
     a (atrs ++ [class Style "child", class Style "content",  href link ]) [ text content ]
