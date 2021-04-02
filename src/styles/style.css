@@ -9,7 +9,6 @@ body {
     padding: 1em 1em;
 }
 
-
 .flex-container-center {
     display: flex;
     flex-direction: column;
@@ -18,15 +17,35 @@ body {
     padding: 1em 1em;
 }
 
+.card-tile {
+    display: flex;
+    flex-flow: column wrap; 
+    width: 100%;
+    border: solid #0000FF;
+}
+
+.card-tile-base {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-evenly;
+    width: 100%;
+    border: solid gray;
+}
+
 
 @media only screen and (min-width: 600px) {
     /* for larger devices */
     .flex-container-center {
-        display: flex;
         flex-flow: row wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 1em 1em;
+    }
+    
+    .card-tile {
+        min-width: 400px;
+        flex: 1;
+        width: auto;
+        border: solid #00FF00;
     }
 }
 
@@ -39,7 +58,7 @@ div#home-root {
 }
 
 .header {
-    text-align: center;
+    align-items: center;
     word-wrap: break-word;
     margin: 0.5em;
 }

@@ -38,11 +38,50 @@ view model =
             , div []
                 [ p [] [ text "Hello, this is kino.ma home page." ]
                 ]
-            , div [ class Style "flex-container" ]
-                [ aChild "https://twitter.kino.ma" [] "Twitter"
-                , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
-                , aChild "https://github.com/kino-ma" [] "GitHub"
-                ]
+                , div [ class Style "card-tile-base"]
+                    [ div [ class Style "card-tile" ]
+                        [ h2 [] [ text "Links" ]
+                        , aChild "https://twitter.kino.ma" [] "Twitter"
+                        , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
+                        , aChild "https://github.com/kino-ma" [] "GitHub"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    , div [ class Style "card-tile"]
+                        [ h2 [] [ text "hoge" ]
+                        , text "fuga"
+                        ]
+                    ]
             , div [class Style "flex-container"]
                 [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
                 ]
