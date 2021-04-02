@@ -45,10 +45,14 @@ view model =
                         , aChild "https://github.com/kino-ma" [] "GitHub"
                         ]
                     , cardTile [] (text "About")
-                        [ text "fuga"
+                        [ text "慶応大学環境情報学部三年　牧野青希"
                         ]
                     , cardTile [] (text "Awards")
-                        [ text "fuga"
+                        [ ul []
+                            [ li [] [text "Hack U SFC 2019 最優秀賞"]
+                            , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
+                            , li [] [text "Hack Day Online 2021 Eaglys賞"]
+                            ]
                         ]
                     , cardTile [] (text "Something")
                         [ text "fuga"
