@@ -5,15 +5,31 @@ body {
 
 .flex-container {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
 }
 
 
 .flex-container-center {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .flex-container {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+
+    .flex-container-center {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 
