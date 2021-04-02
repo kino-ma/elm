@@ -44,7 +44,9 @@ body {
     
     .card-tile {
         min-width: 300px;
+        min-height: 200px;
         flex: 1;
+        align-content: strech;
         width: auto;
         border: solid #00FF00;
     }
@@ -53,6 +55,7 @@ body {
 
 .tile-header {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    flex-shrink: 0;
     text-align: center;
 }
 
@@ -60,6 +63,7 @@ body {
 .card-content {
     width: 75%;
     align-self: center;
+    flex-grow: 1;
 }
 
 
@@ -78,13 +82,16 @@ div#home-root {
 
 
 ul.me-link-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     list-style-type: none;
-    align-self: center;
     padding-left: 0;
 }
 
 .me-link-list-items {
-    margin: 1rem 0rem 0rem;
+    /*margin: 1rem 0rem 0rem; */
+    text-align: center;
 }
 
 

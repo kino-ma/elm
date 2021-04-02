@@ -40,7 +40,7 @@ view model =
                 ]
                 , div [ class Style "card-tile-base"]
                     [ cardTile [] (text "Links")
-                        [ ul [ class Style "me-link-list" ]
+                        [ ul [ class Style "card-content", class Style "me-link-list" ]
                             [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
                             , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
                             , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
@@ -57,22 +57,22 @@ view model =
                             ]
                         ]
                     , cardTile [] (text "Something")
-                        [ text "fuga"
+                        [ cardTextContent "fuga"
                         ]
                     , cardTile [] (text "Foo")
-                        [ text "fuga"
+                        [ cardTextContent "fuga"
                         ]
                     , cardTile [] (text "Bar")
-                        [ text "fuga"
+                        [ cardTextContent "fuga"
                         ]
                     , cardTile [] (text "hoge")
-                        [ text "fuga"
+                        [ cardTextContent "fuga"
                         ]
                     , cardTile [] (text "hoge")
-                        [ text "fuga"
+                        [ cardTextContent "fuga"
                         ]
                     , cardTile [] (text "hoge")
-                        [ text "fuga"
+                        [ cardTextContent "fuga"
                         ]
                     ]
             , div [class Style "flex-container"]
