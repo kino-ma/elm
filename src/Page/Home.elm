@@ -39,47 +39,34 @@ view model =
                 [ p [] [ text "Hello, this is kino.ma home page." ]
                 ]
                 , div [ class Style "card-tile-base"]
-                    [ div [ class Style "card-tile" ]
-                        [ h2 [] [ text "Links" ]
-                        , aChild "https://twitter.kino.ma" [] "Twitter"
+                    [ cardTile [] (text "Links")
+                        [ aChild "https://twitter.kino.ma" [] "Twitter"
                         , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
                         , aChild "https://github.com/kino-ma" [] "GitHub"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "About")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "Awards")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "Something")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "Foo")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "Bar")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "hoge")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "hoge")
+                        [ text "fuga"
                         ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
-                        ]
-                    , div [ class Style "card-tile"]
-                        [ h2 [] [ text "hoge" ]
-                        , text "fuga"
+                    , cardTile [] (text "hoge")
+                        [ text "fuga"
                         ]
                     ]
             , div [class Style "flex-container"]
@@ -87,6 +74,13 @@ view model =
                 ]
             ]
     }
+
+
+cardTile : List (Attribute msg) -> Html msg -> List (Html msg) -> Html msg
+cardTile attrs title content =
+    div
+        (attrs ++ [ class Style "card-tile"])
+        ((h2 [ class Style "tile-header" ] [title]) :: content)
 
 
 aChild : String -> List (Attribute msg) -> String -> Html msg
