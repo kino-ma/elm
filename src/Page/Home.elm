@@ -33,17 +33,17 @@ view : Model -> { title: String, content: Html msg }
 view model =
     { title = "Welcome to kino.ma"
     , content = 
-        div [class Style "root" ]
+        div [ id Style "home-root", class Style "flex-container-center" ]
             [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
             , div []
                 [ p [] [ text "Hello, this is kino.ma home page." ]
                 ]
-            , div [class Style "container"]
+            , div [ class Style "flex-container" ]
                 [ aChild "https://twitter.kino.ma" [] "Twitter"
                 , aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" 
                 , aChild "https://github.com/kino-ma" [] "GitHub"
                 ]
-            , div [class Style "container"]
+            , div [class Style "flex-container"]
                 [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
                 ]
             ]
@@ -52,7 +52,7 @@ view model =
 
 aChild : String -> List (Attribute msg) -> String -> Html msg
 aChild link atrs content =
-    a (atrs ++ [class Style "child", class Style "content",  href link ]) [ text content ]
+    a (atrs ++ [ class Style "me-link", href link ]) [ text content ]
 
 
 toSession : Model -> Session
