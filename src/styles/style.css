@@ -1,6 +1,7 @@
 body {
     font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     color: #212121;
+    background-color: #FEFEFE;
     line-height: 1.75;
     margin: 0;
 }
@@ -99,7 +100,6 @@ div#home-root {
 }
 
 .me-link-list-items {
-    /*margin: 1rem 0rem 0rem; */
     text-align: center;
 }
 
@@ -114,23 +114,23 @@ div#home-root {
 }
 
 .page-header-container {
-    background-color: #F8F8F8;
+    background-color: #f8f8F8;
     display: flex;
-    align-content: flex-start; /* align children to vertically center if there is empty space */
+    align-items: center;
     margin: 0;
     line-height: 0;
     width: 100%;
 }
-.page-header-child {
-    margin: 0.5em;
-}
 .page-header-logo {
     height: 3rem;
     padding: 0;
-    margin: 0;
     background-color: white;
+    /*border: solid 1px #E8E8E8; */
 }
+
 .page-header-logo-container {
-    margin: 0;
-    padding: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem;
 }

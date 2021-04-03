@@ -32,15 +32,15 @@ viewHeader =
 
 headerMenuLink : List (Attribute msg) -> Route -> List (Html msg) -> Html msg
 headerMenuLink attrs route =
-    a <| attrs ++ [ class Style "page-header-child", href route ]
+    a <| attrs ++ [ href route ]
 
 
 logo : Html msg
 logo = 
-    headerMenuLink
-        [ class Style "page-header-logo-container" ]
-        Route.Home
-        [ img [ src "/logo.svg", class Style "page-header-logo", Attr.alt "logo of Hiragana MA" ] [] ]
+    span [ class Style "page-header-logo-container"  ]
+        [ headerMenuLink [] Route.Home
+            [ img [ src "/logo.svg", class Style "page-header-logo", Attr.alt "logo of Hiragana MA" ] [] ]
+        ]
 
 
 
