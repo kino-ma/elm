@@ -89,8 +89,10 @@ div#home-root {
 }
 
 
-.general-list {
+ul.general-list {
     display: flex;
+    width: 80%;
+    padding-left: 7.5%;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -98,7 +100,7 @@ div#home-root {
 .me-link-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-left: 0;
     list-style-type: none;
 }
@@ -140,5 +142,5 @@ div#home-root {
 }
 
 a:link, a:visited {
-    color: #0366d6;
+    color: inherit;
 }
