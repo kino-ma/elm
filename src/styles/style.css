@@ -81,12 +81,18 @@ div#home-root {
 }
 
 
-ul.me-link-list {
+.general-list-items {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    list-style-type: none;
+}
+
+.me-link-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     padding-left: 0;
+    list-style-type: none;
 }
 
 .me-link-list-items {
