@@ -35,46 +35,43 @@ view model =
     , content = 
         div [ id Style "home-root", class Style "flex-container-center" ]
             [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
-            , div []
-                [ p [] [ text "Hello, this is kino.ma home page." ]
-                ]
-                , main_ [ class Style "card-tile-base"]
-                    [ cardTile [] (text "Links")
-                        [ ul [ class Style "card-content", class Style "me-link-list" ]
-                            [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
-                            , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
-                            , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
-                            ]
-                        ]
-                    , cardTile [] (text "About")
-                        [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
-                        ]
-                    , cardTile [] (text "Awards")
-                        [ ul [ class Style "card-content", class Style "general-list-items" ]
-                            [ li [] [text "Hack U SFC 2019 最優秀賞"]
-                            , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
-                            , li [] [text "Hack Day Online 2021 Eaglys賞"]
-                            ]
-                        ]
-                    , cardTile [] (text "Something")
-                        [ cardTextContent "fuga"
-                        ]
-                    , cardTile [] (text "Foo")
-                        [ cardTextContent "fuga"
-                        ]
-                    , cardTile [] (text "Bar")
-                        [ cardTextContent "fuga"
-                        ]
-                    , cardTile [] (text "hoge")
-                        [ cardTextContent "fuga"
-                        ]
-                    , cardTile [] (text "hoge")
-                        [ cardTextContent "fuga"
-                        ]
-                    , cardTile [] (text "hoge")
-                        [ cardTextContent "fuga"
+            , main_ [ class Style "card-tile-base"]
+                [ cardTile [] (text "Links")
+                    [ ul [ class Style "card-content", class Style "me-link-list" ]
+                        [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
+                        , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
+                        , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
                         ]
                     ]
+                , cardTile [] (text "About")
+                    [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
+                    ]
+                , cardTile [] (text "Awards")
+                    [ ul [ class Style "card-content", class Style "general-list-items" ]
+                        [ li [] [text "Hack U SFC 2019 最優秀賞"]
+                        , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
+                        , li [] [text "Hack Day Online 2021 Eaglys賞"]
+                        ]
+                    ]
+                , cardTile [] (text "Something")
+                    [ cardTextContent "fuga"
+                    ]
+                , cardTile [] (text "Foo")
+                    [ cardTextContent "fuga"
+                    ]
+                , cardTile [] (text "Bar")
+                    [ cardTextContent "fuga"
+                    ]
+                , cardTile [] (text "hoge")
+                    [ cardTextContent "fuga"
+                    ]
+                , cardTile [] (text "hoge")
+                    [ cardTextContent "fuga"
+                    ]
+                , cardTile [] (text "hoge")
+                    [ cardTextContent "fuga"
+                    ]
+                ]
             , div [class Style "flex-container"]
                 [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
                 ]
