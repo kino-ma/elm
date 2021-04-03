@@ -38,7 +38,7 @@ view model =
             , div []
                 [ p [] [ text "Hello, this is kino.ma home page." ]
                 ]
-                , div [ class Style "card-tile-base"]
+                , main_ [ class Style "card-tile-base"]
                     [ cardTile [] (text "Links")
                         [ ul [ class Style "card-content", class Style "me-link-list" ]
                             [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
