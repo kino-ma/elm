@@ -48,19 +48,21 @@ body {
     .flex-container-center {
         flex-flow: row wrap;
     }
-    
     .card-tile {
-        min-width: 320px;
+        min-width: max(50%, 320px);
         flex: 1;
+    }
+    .card-tile-base {
+        width: 80%;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     .card-tile {
-        min-width: 33%;
+        min-width: max(33.33%, 320px);
     }
     .card-tile-base {
-        width: 75%;
+        width: 70%;
     }
 }
 
