@@ -1,7 +1,7 @@
 module Page.Home exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (href, rel)
+import Html.Attributes as Attr exposing (href, rel)
 import Url
 
 import Css exposing (..)
@@ -51,11 +51,14 @@ view model =
     }
 
 
-cardTile : List (Attribute msg) -> Html msg -> List (Html msg) -> Html msg
+cardTile : List (Attribute msg) -> String -> List (Html msg) -> Html msg
 cardTile attrs title content =
     div
         (attrs ++ [ class Style "card-tile"])
-        ((h2 [ class Style "tile-heading" ] [title]) :: content)
+        (( h2
+            [ class Style "tile-heading", Attr.id title ]
+            [ a [ class Style "tile-heading-link", href ("#" ++ title) ] [text title]])
+            :: content)
 
 
 cardTextContent : String -> Html msg
@@ -82,14 +85,14 @@ toSession model =
 
 cardDescription : Html msg
 cardDescription =
-    cardTile [] (text "About")
+    cardTile [] "About"
         [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
         ]
 
 
 cardLinks : Html msg
 cardLinks = 
-    cardTile [] (text "Links")
+    cardTile [] "Links"
         [ ul [ class Style "card-content", class Style "me-link-list" ]
             [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
             , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
@@ -100,7 +103,7 @@ cardLinks =
 
 cardAwards : Html msg
 cardAwards = 
-    cardTile [] (text "Awards")
+    cardTile [] "Awards"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [text "Hack U SFC 2019 最優秀賞"]
             , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
@@ -111,7 +114,7 @@ cardAwards =
 
 cardProducts : Html msg
 cardProducts = 
-    cardTile [] (text "Products")
+    cardTile [] "Products"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [ a [ href "https://github.com/pj-aias" ] [ text "匿名認証システム AIAS" ] ]
             , li [] [ a [ href "https://www.slideshare.net/kino___ma/neopanopticon-hacku-sfc-2019-201816573" ] [ text "魔法のSNS Neo-Panopticon" ] ]
@@ -123,6 +126,6 @@ cardProducts =
 
 cardPlaceHolder : Html msg
 cardPlaceHolder =
-    cardTile [] (text "Something")
+    cardTile [] "Something"
         [ cardTextContent "fuga"
         ]

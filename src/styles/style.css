@@ -64,6 +64,10 @@ body {
     text-align: center;
 }
 
+.tile-heading .tile-heading-link {
+    color: #212121;
+}
+
 
 .card-content {
     width: 75%;
