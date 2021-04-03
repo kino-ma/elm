@@ -50,7 +50,7 @@ body {
     }
     
     .card-tile {
-        min-width: 50%;
+        min-width: 320px;
         flex: 1;
     }
 }
