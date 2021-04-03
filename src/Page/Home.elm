@@ -36,41 +36,16 @@ view model =
         div [ id Style "home-root", class Style "flex-container-center" ]
             [ h1 [ class Style "heading" ] [ text "Welcome to kino.ma" ]
             , main_ [ class Style "card-tile-base"]
-                [ cardTile [] (text "Links")
-                    [ ul [ class Style "card-content", class Style "me-link-list" ]
-                        [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
-                        , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
-                        , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
-                        ]
-                    ]
-                , cardTile [] (text "About")
-                    [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
-                    ]
-                , cardTile [] (text "Awards")
-                    [ ul [ class Style "card-content", class Style "general-list-items" ]
-                        [ li [] [text "Hack U SFC 2019 最優秀賞"]
-                        , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
-                        , li [] [text "Hack Day Online 2021 Eaglys賞"]
-                        ]
-                    ]
-                , cardTile [] (text "Something")
-                    [ cardTextContent "fuga"
-                    ]
-                , cardTile [] (text "Foo")
-                    [ cardTextContent "fuga"
-                    ]
-                , cardTile [] (text "Bar")
-                    [ cardTextContent "fuga"
-                    ]
-                , cardTile [] (text "hoge")
-                    [ cardTextContent "fuga"
-                    ]
-                , cardTile [] (text "hoge")
-                    [ cardTextContent "fuga"
-                    ]
-                , cardTile [] (text "hoge")
-                    [ cardTextContent "fuga"
-                    ]
+                [ cardDescription
+                , cardLinks
+                , cardAwards
+                , cardProducts
+                , cardPlaceHolder
+                , cardPlaceHolder
+                , cardPlaceHolder
+                , cardPlaceHolder
+                , cardPlaceHolder
+                , cardPlaceHolder
                 ]
             ]
     }
@@ -90,6 +65,7 @@ cardTextContent content =
         [ text content ]
 
 
+meLinkListItems : List (Html msg) -> Html msg
 meLinkListItems =
     li [ class Style "me-link-list-items" ]
 
@@ -102,3 +78,51 @@ aChild link atrs content =
 toSession : Model -> Session
 toSession model =
     model.session
+
+
+cardDescription : Html msg
+cardDescription =
+    cardTile [] (text "About")
+        [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
+        ]
+
+
+cardLinks : Html msg
+cardLinks = 
+    cardTile [] (text "Links")
+        [ ul [ class Style "card-content", class Style "me-link-list" ]
+            [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
+            , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
+            , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
+            ]
+        ]
+
+
+cardAwards : Html msg
+cardAwards = 
+    cardTile [] (text "Awards")
+        [ ul [ class Style "card-content", class Style "general-list-items" ]
+            [ li [] [text "Hack U SFC 2019 最優秀賞"]
+            , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
+            , li [] [text "Hack Day Online 2021 Eaglys賞"]
+            ]
+        ]
+
+
+cardProducts : Html msg
+cardProducts = 
+    cardTile [] (text "Products")
+        [ ul [ class Style "card-content", class Style "general-list-items" ]
+            [ li [] [ a [ href "https://github.com/pj-aias" ] [ text "匿名認証システム AIAS" ] ]
+            , li [] [ a [ href "https://www.slideshare.net/kino___ma/neopanopticon-hacku-sfc-2019-201816573" ] [ text "魔法のSNS Neo-Panopticon" ] ]
+            , li [] [ a [ href "https://speakerdeck.com/yosh1/hack-day-2021-maigo" ] [ text "人探しサービス MAIGO" ] ]
+            , li [] [ a [ href "https://github.com/kino-ma/qcure" ] [ text "ドメイン固有言語qcure" ] ]
+            ]
+        ]
+
+
+cardPlaceHolder : Html msg
+cardPlaceHolder =
+    cardTile [] (text "Something")
+        [ cardTextContent "fuga"
+        ]
