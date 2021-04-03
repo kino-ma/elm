@@ -26,6 +26,7 @@ body {
 
 .card-tile {
     display: flex;
+    min-height: 200px;
     flex-flow: column wrap; 
     width: 100%;
     box-shadow : 0 0 0 1px #F0F0F0;
@@ -49,11 +50,17 @@ body {
     }
     
     .card-tile {
-        min-width: 300px;
-        min-height: 200px;
+        min-width: 50%;
         flex: 1;
-        align-content: strech;
-        width: auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .card-tile {
+        min-width: 33%;
+    }
+    .card-tile-base {
+        width: 75%;
     }
 }
 
