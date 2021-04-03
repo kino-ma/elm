@@ -101,7 +101,7 @@ cardLinks =
 cardAwards : Html msg
 cardAwards = 
     cardTile [] (text "Awards")
-        [ ul [ class Style "card-content", class Style "general-list-items" ]
+        [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [text "Hack U SFC 2019 最優秀賞"]
             , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
             , li [] [text "Hack Day Online 2021 Eaglys賞"]
@@ -112,7 +112,7 @@ cardAwards =
 cardProducts : Html msg
 cardProducts = 
     cardTile [] (text "Products")
-        [ ul [ class Style "card-content", class Style "general-list-items" ]
+        [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [ a [ href "https://github.com/pj-aias" ] [ text "匿名認証システム AIAS" ] ]
             , li [] [ a [ href "https://www.slideshare.net/kino___ma/neopanopticon-hacku-sfc-2019-201816573" ] [ text "魔法のSNS Neo-Panopticon" ] ]
             , li [] [ a [ href "https://speakerdeck.com/yosh1/hack-day-2021-maigo" ] [ text "人探しサービス MAIGO" ] ]

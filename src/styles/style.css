@@ -84,7 +84,7 @@ div#home-root {
 }
 
 
-.general-list-items {
+.general-list {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
