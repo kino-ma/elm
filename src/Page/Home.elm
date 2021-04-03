@@ -34,7 +34,7 @@ view model =
     { title = "Welcome to kino.ma"
     , content = 
         div [ id Style "home-root", class Style "flex-container-center" ]
-            [ h1 [ class Style "header" ] [ text "Welcome to kino.ma" ]
+            [ h1 [ class Style "heading" ] [ text "Welcome to kino.ma" ]
             , main_ [ class Style "card-tile-base"]
                 [ cardTile [] (text "Links")
                     [ ul [ class Style "card-content", class Style "me-link-list" ]
@@ -80,7 +80,7 @@ cardTile : List (Attribute msg) -> Html msg -> List (Html msg) -> Html msg
 cardTile attrs title content =
     div
         (attrs ++ [ class Style "card-tile"])
-        ((h2 [ class Style "tile-header" ] [title]) :: content)
+        ((h2 [ class Style "tile-heading" ] [title]) :: content)
 
 
 cardTextContent : String -> Html msg

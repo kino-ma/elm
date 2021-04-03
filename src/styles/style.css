@@ -58,7 +58,7 @@ body {
 }
 
 
-.tile-header {
+.tile-heading {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     flex-shrink: 0;
     text-align: center;
@@ -78,7 +78,7 @@ div#home-root {
     margin: 1%;
 }
 
-.header {
+.main-heading {
     align-items: center;
     text-align: center;
     word-wrap: break-word;
