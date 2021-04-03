@@ -33,9 +33,9 @@ view : Model -> { title: String, content: Html msg }
 view model =
     { title = "Welcome to kino.ma"
     , content = 
-        div [ id Style "home-root", class Style "flex-container-center" ]
-            [ h1 [ class Style "heading" ] [ text "Welcome to kino.ma" ]
-            , main_ [ class Style "card-tile-base"]
+        main_ [ class Style "main-content", class Style "flex-container-center" ]
+            [ h1 [ id Style "main-heading" ] [ text "kino-ma Website" ]
+            , div [ class Style "card-tile-base"]
                 [ cardDescription
                 , cardOrganizations
                 , cardLinks

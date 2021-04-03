@@ -45,9 +45,6 @@ body {
 
 @media only screen and (min-width: 600px) {
     /* for larger devices */
-    .flex-container-center {
-        flex-flow: row wrap;
-    }
     .card-tile {
         min-width: max(50%, 320px);
         flex: 1;
@@ -85,7 +82,7 @@ body {
 }
 
 
-div#home-root {
+#main-content {
     display: flex;
     flex-direction: column;
 }
@@ -94,7 +91,7 @@ div#home-root {
     align-items: center;
     text-align: center;
     word-wrap: break-word;
-    margin: 0.5em;
+    margin: 2.5rem;
 }
 
 
