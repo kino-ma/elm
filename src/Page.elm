@@ -40,7 +40,7 @@ logo =
     headerMenuLink
         [ class Style "page-header-logo-container" ]
         Route.Home
-        [ img [ src "/logo.svg", class Style "page-header-logo" ] [] ]
+        [ img [ src "/logo.svg", class Style "page-header-logo", Attr.alt "logo of Hiragana MA" ] [] ]
 
 
 
