@@ -37,6 +37,7 @@ view model =
             [ h1 [ class Style "heading" ] [ text "Welcome to kino.ma" ]
             , main_ [ class Style "card-tile-base"]
                 [ cardDescription
+                , cardOrganizations
                 , cardLinks
                 , cardAwards
                 , cardProducts
@@ -86,7 +87,24 @@ toSession model =
 cardDescription : Html msg
 cardDescription =
     cardTile [] "About"
-        [ cardTextContent "慶応大学環境情報学部三年　牧野青希"
+        [ cardTextContent "慶應大学大学環境情報学部　2019年度入学　牧野青希"
+        ]
+
+
+cardOrganizations : Html msg
+cardOrganizations =
+    cardTile [] "Organizations"
+        [ ul [ class Style "card-content", class Style "general-list" ]
+            [ li []
+                [ a [ href "https://rg.sfc.wide.ad.jp" ] [ text "慶應大学 徳田・村井合同研究室" ]
+                , ul []
+                    [ li [] [ a [ href "https://www.jn.sfc.keio.ac.jp" ] [ text "中澤研究会" ] ]
+                    , li [] [ a [ href "https://rgroot.sfc.wide.ad.jp/" ] [ text "植原研究会" ] ]
+                    , li [] [ a [ href "https://d-trust.sfc.wide.ad.jp/" ] [ text "手塚研究会" ] ]
+                    ]
+                ]
+            , li [] [ a [ href "https://github.com/makino-makino" ] [ text "魔法少女まきの☆マキノ" ] ]
+            ]
         ]
 
 
