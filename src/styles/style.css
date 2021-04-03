@@ -2,6 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #212121;
     line-height: 1.75;
+    margin: 0;
 }
 
 *, :after, :before {
@@ -107,7 +108,7 @@ div#home-root {
 
 /* headers and footers */
 .page-footer-container {
-    background-color: #F0F0F0;
+    background-color: #F8F8F8;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,10 +116,11 @@ div#home-root {
 }
 
 .page-header-container {
-    background-color: #F0F0F0;
+    background-color: #F8F8F8;
     display: flex;
-    align-items: center; /* align children to vertically center if there is empty space */
+    align-content: flex-start; /* align children to vertically center if there is empty space */
     margin: 0;
+    line-height: 0;
     width: 100%;
 }
 .page-header-child {
@@ -128,7 +130,9 @@ div#home-root {
     height: 3rem;
     padding: 0;
     margin: 0;
+    background-color: white;
 }
 .page-header-logo-container {
     margin: 0;
+    padding: 0;
 }

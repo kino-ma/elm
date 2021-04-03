@@ -19,7 +19,7 @@ type Page
 view : Page -> { title : String, content : Html msg } -> Document msg
 view page { title, content } =
     { title = title
-    , body = [ content ]
+    , body = [ viewHeader, content, viewFooter ]
     }
 
 viewHeader : Html msg
@@ -27,8 +27,6 @@ viewHeader =
     header
         [ class Style "page-header-container" ]
         [ logo
-        , headerMenuLink [] None [ text "MENU " ]
-        , hiddenMenu []
         ]
 
 
@@ -59,4 +57,7 @@ viewFooter : Html msg
 viewFooter = 
     footer
         [ class Style "page-footer-container" ]
-        [ small [ class Style "page-footer-child" ] [ text "footer" ] ]
+        [ small [class Style "flex-container"]
+            [ a [ Attr.href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
+            ]
+        ]

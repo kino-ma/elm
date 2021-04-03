@@ -72,9 +72,6 @@ view model =
                     [ cardTextContent "fuga"
                     ]
                 ]
-            , div [class Style "flex-container"]
-                [ a [ href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
-                ]
             ]
     }
 
