@@ -103,6 +103,17 @@ ul.general-list {
     justify-content: space-between;
 }
 
+.language-list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+}
+.language-list * {
+    display: inline;
+    word-wrap: break-word;
+    margin: 0.1rem;
+}
+
 .me-link-list {
     display: flex;
     flex-direction: column;

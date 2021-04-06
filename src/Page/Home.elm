@@ -41,6 +41,7 @@ view model =
                 , cardLinks
                 , cardAwards
                 , cardProducts
+                , cardLanguages
                 , cardPlaceHolder
                 , cardPlaceHolder
                 , cardPlaceHolder
@@ -138,6 +139,40 @@ cardProducts =
             , li [] [ a [ href "https://www.slideshare.net/kino___ma/neopanopticon-hacku-sfc-2019-201816573" ] [ text "魔法のSNS Neo-Panopticon" ] ]
             , li [] [ a [ href "https://speakerdeck.com/yosh1/hack-day-2021-maigo" ] [ text "人探しサービス MAIGO" ] ]
             , li [] [ a [ href "https://github.com/kino-ma/qcure" ] [ text "ドメイン固有言語qcure" ] ]
+            ]
+        ]
+
+
+cardLanguages : Html msg
+cardLanguages = 
+    cardTile [] "Languages"
+        {-[ cardTextContent
+            "日本語, English (a little), Rust, Python, C/C++, JS (React, Node, TypeScript), Go, Haskell, Elm (This page is written in Elm), V"
+        ] -}
+        [ ul [ class Style "card-content", class Style "language-list" ]
+            [ li [] [text "日本語"]
+            , li [] [text "English (a little)"]
+            , li [] [text "Rust"]
+            , li [] [text "Python"]
+            , li [] [text "C/C++"]
+            , li []
+                [ text "JS (React, Node, TypeScript)"
+                {-, ul [ class Style "row-list" ]
+                    [ li [] [text "React"]
+                    , li [] [text "Node"]
+                    , li [] [text "TypeScript"]
+                    ]-}
+                ]
+            , li [] [text "Go"]
+            , li [] [text "Haskell"]
+            , li [] [text "Elm (This page is written in Elm)"]
+                {-, ul []
+                    [ li [] [text "This page is written in Elm"]
+                    ]-}
+            , li [] [text "V"]
+            , li [] [text "V"]
+            , li [] [text "V"]
+            , li [] [text "V"]
             ]
         ]
 
