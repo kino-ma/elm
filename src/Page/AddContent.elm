@@ -61,7 +61,7 @@ update msg model =
 
 view : Model -> { title: String, content: Html Msg }
 view model =
-    { title = ""
+    { title = "Add string to the start or the end of content"
     , content = div [ class Style "root" ]
         [ h1 [class Style "header" ] [ text model.result ]
         , div [ class Style "container" ]
