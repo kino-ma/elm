@@ -34,7 +34,7 @@ view model =
     { title = "Welcome to kino.ma"
     , content = 
         main_ [ class Style "main-content", class Style "flex-container-center" ]
-            [ h1 [ id Style "main-heading" ] [ text "kino-ma Website" ]
+            [ h1 [ id Style "main-heading" ] [ text "kino-ma" ]
             , div [ class Style "card-tile-base"]
                 [ cardDescription
                 , cardOrganizations
@@ -63,11 +63,27 @@ cardTile attrs title content =
             :: content)
 
 
-cardTextContent : String -> Html msg
-cardTextContent content =
+cardText : String -> Html msg
+cardText content =
     p
         [ class Style "card-content" ]
         [ text content ]
+
+
+cardTextMultiLine : List (String) -> Html msg
+cardTextMultiLine contents =
+    let
+        concatLines a bs =
+            if not (List.isEmpty bs)
+                then a :: br [] [] :: bs
+                else a :: bs
+        multiLine2text =
+            List.foldr concatLines [] <<
+                List.map text
+    in
+    p
+        [ class Style "card-content" ]
+        <| multiLine2text contents
 
 
 meLinkListItems : List (Html msg) -> Html msg
@@ -88,7 +104,7 @@ toSession model =
 cardDescription : Html msg
 cardDescription =
     cardTile [] "About"
-        [ cardTextContent "慶應大学大学環境情報学部　2019年度入学　牧野青希"
+        [ cardTextMultiLine [ "慶應大学大学環境情報学部　2019年度入学", "牧野青希" ]
         ]
 
 
@@ -167,5 +183,5 @@ cardLanguages =
 cardPlaceHolder : Html msg
 cardPlaceHolder =
     cardTile [] "Something"
-        [ cardTextContent "fuga"
+        [ cardText "fuga"
         ]
