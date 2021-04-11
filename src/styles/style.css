@@ -48,6 +48,7 @@ body {
     /* for larger devices */
     .card-tile {
         min-width: max(50%, 320px);
+        max-width: max(50%, 320px);
         flex: 1;
     }
     .card-tile-base {
@@ -58,9 +59,11 @@ body {
 @media only screen and (min-width: 1200px) {
     .card-tile {
         min-width: max(33.33%, 320px);
+        max-width: max(33.33%, 320px);
     }
     .card-tile-base {
         width: 70%;
+        max-width: 1200px;
     }
 }
 
