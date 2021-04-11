@@ -3,6 +3,7 @@ body {
     color: #212121;
     background-color: #FEFEFE;
     line-height: 1.75;
+    word-wrap: break-word;
     margin: 0;
 }
 
@@ -104,14 +105,20 @@ ul.general-list {
 }
 
 .language-list {
-    display: flex;
+    display: inline-flex;
+    padding-left: 0;
     flex-flow: row wrap;
+    justify-content: space-evenly;
     list-style-type: none;
 }
 .language-list * {
     display: inline;
-    word-wrap: break-word;
-    margin: 0.1rem;
+    padding: 0.2rem 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.language-list *:not(:last-child)::after {
+    content: ",";
 }
 
 .me-link-list {
