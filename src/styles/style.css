@@ -101,7 +101,7 @@ ul.general-list {
     width: 80%;
     padding-left: 7.5%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .language-list {

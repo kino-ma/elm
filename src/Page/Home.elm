@@ -105,7 +105,7 @@ cardDescription : Html msg
 cardDescription =
     cardTile [] "About"
         [ cardTextMultiLine
-            [ "牧野青希 - Seiki Makino"
+            [ "牧野青希, Seiki Makino"
             , "慶應義塾大学環境情報学部　2019年度入学"
             ]
         ]
