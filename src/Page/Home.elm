@@ -104,7 +104,10 @@ toSession model =
 cardDescription : Html msg
 cardDescription =
     cardTile [] "About"
-        [ cardTextMultiLine [ "慶應大学大学環境情報学部　2019年度入学", "牧野青希" ]
+        [ cardTextMultiLine
+            [ "牧野青希 - Seiki Makino"
+            , "慶應義塾大学環境情報学部　2019年度入学"
+            ]
         ]
 
 
@@ -128,7 +131,7 @@ cardOrganizations =
 cardLinks : Html msg
 cardLinks = 
     cardTile [] "Links"
-        [ ul [ class Style "card-content", class Style "me-link-list" ]
+        [ ul [ class Style "card-content", class Style "general-list" ]
             [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
             , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
             , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
@@ -173,7 +176,7 @@ cardLanguages =
             , li [] [ text "Go" ]
             , li [] [ text "Haskell" ]
             , li [] [ text "Elm - This page is written in Elm" ]
-            , li [] [ text "V" ]
+            , li [] [ text "V - Contributor" ]
             , li [] [ text "日本語" ]
             , li [] [ text "English (a little)" ]
             ]
