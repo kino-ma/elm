@@ -42,12 +42,6 @@ view model =
                 , cardAwards
                 , cardProducts
                 , cardLanguages
-                , cardPlaceHolder
-                , cardPlaceHolder
-                , cardPlaceHolder
-                , cardPlaceHolder
-                , cardPlaceHolder
-                , cardPlaceHolder
                 ]
             ]
     }
@@ -180,11 +174,4 @@ cardLanguages =
             , li [] [ text "日本語" ]
             , li [] [ text "English (a little)" ]
             ]
-        ]
-
-
-cardPlaceHolder : Html msg
-cardPlaceHolder =
-    cardTile [] "Something"
-        [ cardText "fuga"
         ]
