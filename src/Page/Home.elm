@@ -127,13 +127,10 @@ cardInterested : Html msg
 cardInterested =
     cardTile [] "Interested"
         [ ul [ class Style "card-content", class Style "general-list" ]
-            [ li [] [text "Operating Systems"]
-            , li [] [text "Networking"]
-            , li [] [text "Programming"]
-            , li [] [text "Programming"]
-            , li [] [text "Programming"]
-            , li [] [text "Programming"]
-            , li [] [text "Programming"]
+            [ li [] [ text "Operating Systems" ]
+            , li [] [ text "Networking" ]
+            , li [] [ text "Computer Programming" ]
+            , li [] [ text "Cyber Security"]
             ]
         ]
 
@@ -153,9 +150,10 @@ cardAwards : Html msg
 cardAwards = 
     cardTile [] "Awards"
         [ ul [ class Style "card-content", class Style "general-list" ]
-            [ li [] [text "Hack U SFC 2019 最優秀賞"]
-            , li [] [text "Open Hack U Online 2020 vol.2 最優秀賞"]
-            , li [] [text "Hack Day Online 2021 Eaglys賞"]
+            [ li [] [ text "Hack U SFC 2019 最優秀賞" ]
+            , li [] [ text "Open Hack U Online 2020 vol.2 最優秀賞" ]
+            , li [] [ text "Hack Day Online 2021 Eaglys賞" ]
+            , li [] [ text "#ばにしぇを作ろう 最優秀賞" ]
             ]
         ]
 
