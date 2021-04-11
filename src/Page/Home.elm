@@ -149,30 +149,17 @@ cardLanguages =
         {-[ cardTextContent
             "日本語, English (a little), Rust, Python, C/C++, JS (React, Node, TypeScript), Go, Haskell, Elm (This page is written in Elm), V"
         ] -}
-        [ ul [ class Style "card-content", class Style "language-list" ]
-            [ li [] [text "日本語"]
-            , li [] [text "English (a little)"]
-            , li [] [text "Rust"]
-            , li [] [text "Python"]
-            , li [] [text "C/C++"]
-            , li []
-                [ text "JS (React, Node, TypeScript)"
-                {-, ul [ class Style "row-list" ]
-                    [ li [] [text "React"]
-                    , li [] [text "Node"]
-                    , li [] [text "TypeScript"]
-                    ]-}
-                ]
-            , li [] [text "Go"]
-            , li [] [text "Haskell"]
-            , li [] [text "Elm (This page is written in Elm)"]
-                {-, ul []
-                    [ li [] [text "This page is written in Elm"]
-                    ]-}
-            , li [] [text "V"]
-            , li [] [text "V"]
-            , li [] [text "V"]
-            , li [] [text "V"]
+        [ ol [ class Style "card-content", class Style "language-list" ]
+            [ li [] [ text "Rust" ]
+            , li [] [ text "Python" ]
+            , li [] [ text "C/C++" ]
+            , li [] [ text "JS - React, Node, TypeScript" ]
+            , li [] [ text "Go" ]
+            , li [] [ text "Haskell" ]
+            , li [] [ text "Elm - This page is written in Elm" ]
+            , li [] [ text "V" ]
+            , li [] [ text "日本語" ]
+            , li [] [ text "English (a little)" ]
             ]
         ]
 
