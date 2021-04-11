@@ -38,6 +38,7 @@ view model =
             , div [ class Style "card-tile-base"]
                 [ cardDescription
                 , cardOrganizations
+                , cardInterested
                 , cardLinks
                 , cardAwards
                 , cardProducts
@@ -118,6 +119,21 @@ cardOrganizations =
                     ]
                 ]
             , li [] [ a [ href "https://github.com/makino-makino" ] [ text "魔法少女まきの☆マキノ" ] ]
+            ]
+        ]
+
+
+cardInterested : Html msg
+cardInterested =
+    cardTile [] "Interested"
+        [ ul [ class Style "card-content", class Style "general-list" ]
+            [ li [] [text "Operating Systems"]
+            , li [] [text "Networking"]
+            , li [] [text "Programming"]
+            , li [] [text "Programming"]
+            , li [] [text "Programming"]
+            , li [] [text "Programming"]
+            , li [] [text "Programming"]
             ]
         ]
 
