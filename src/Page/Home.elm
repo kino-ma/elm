@@ -151,8 +151,8 @@ cardAwards =
     cardTile [] "Awards"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [ text "Hack U SFC 2019 最優秀賞" ]
-            , li [] [ text "Open Hack U Online 2020 vol.2 最優秀賞" ]
-            , li [] [ text "Hack Day Online 2021 Eaglys賞" ]
+            , li [] [ text "Open Hack U 2020 Online Vol.2 最優秀賞" ]
+            , li [] [ text "Yahoo! Japan Hack Day 2021 Online Eaglys賞" ]
             , li [] [ text "#ばにしぇを作ろう 最優秀賞" ]
             ]
         ]
