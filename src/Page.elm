@@ -58,6 +58,7 @@ viewFooter =
     footer
         [ class Style "page-footer-container" ]
         [ small [class Style "flex-container"]
-            [ a [ Attr.href "https://github.com/kino-ma/www.kino.ma" ] [ text "page source" ]
+            [ span [ id Style "page-footer-copyright" ] [ text "2021 kino-ma" ]
+            , a [ Attr.href "https://github.com/kino-ma/www.kino.ma", class Style "page-footer-source" ] [ text "page source" ]
             ]
         ]

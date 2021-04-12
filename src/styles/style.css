@@ -140,6 +140,11 @@ ul.general-list {
     flex-direction: column;
     align-items: center;
     margin-top: 3em;
+    color: gray;
+}
+
+#page-footer-copyright {
+    padding: 0 0.5rem;
 }
 
 .page-header-container {
