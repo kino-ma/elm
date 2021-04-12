@@ -142,6 +142,7 @@ cardLinks =
             [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
             , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
             , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
+            , meLinkListItems [ aChild "https://www.amazon.jp/hz/wishlist/ls/3I4HKWWH6OJWD?ref_=wl_share" [] "Hoshi imo" ]
             ]
         ]
 
@@ -157,7 +158,7 @@ cardAwards =
                 [ a
                     [ Attr.href "https://twitter.com/search?q=%23%E3%81%B0%E3%81%AB%E3%81%97%E3%81%87%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86" ]
                     [ text "#ばにしぇを作ろう" ]
-                , text "最優秀賞" ]
+                , text " 最優秀賞" ]
             ]
         ]
 
