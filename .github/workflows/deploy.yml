@@ -40,4 +40,4 @@ jobs:
                 -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_ADDR} \
                 -i secret_key \
                 -p ${SSH_PORT} \
-                "cd ${PROJ_NAME} && ./deploy.sh"
+                "cd projects/${PROJ_NAME} && ./deploy.sh"
