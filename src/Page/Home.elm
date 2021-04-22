@@ -43,6 +43,7 @@ view model =
                 , cardAwards
                 , cardProducts
                 , cardLanguages
+                , cardSkills
                 ]
             ]
     }
@@ -130,7 +131,9 @@ cardInterested =
             [ li [] [ text "Operating Systems" ]
             , li [] [ text "Networking" ]
             , li [] [ text "Computer Programming" ]
-            , li [] [ text "Cyber Security"]
+            , li [] [ text "Cyber Security" ]
+            , li [] [ text "Vim" ]
+            , li [] [ text "Dvorak Keyboard Layout" ]
             ]
         ]
 
@@ -178,19 +181,42 @@ cardProducts =
 cardLanguages : Html msg
 cardLanguages = 
     cardTile [] "Languages"
-        {-[ cardTextContent
-            "日本語, English (a little), Rust, Python, C/C++, JS (React, Node, TypeScript), Go, Haskell, Elm (This page is written in Elm), V"
-        ] -}
         [ ol [ class Style "card-content", class Style "language-list" ]
             [ li [] [ text "Rust" ]
             , li [] [ text "Python" ]
             , li [] [ text "C/C++" ]
-            , li [] [ text "JS - React, Node, TypeScript" ]
+            , li [] [ text "JS / TypeScript" ]
             , li [] [ text "Go" ]
             , li [] [ text "Haskell" ]
             , li [] [ text "Elm - This page is written in Elm" ]
             , li [] [ text "V - Contributor" ]
             , li [] [ text "日本語" ]
             , li [] [ text "English (a little)" ]
+            ]
+        ]
+
+
+cardSkills : Html msg
+cardSkills = 
+    cardTile [] "Skills"
+        [ ul [ class Style "card-content", class Style "general-list" ]
+            [ li []
+                [ text "Server-Side Development"
+                , ul []
+                    [ li [] [ text "Django (Python)" ]
+                    , li [] [ text "Flask (Python)" ]
+                    , li [] [ text "actix (Rust)" ]
+                    , li [] [ text "Node.js / deno" ]
+                    ]
+                ]
+            , li []
+                [ text "Web Front-End Development"
+                , ul []
+                    [ li [] [ text "ReactJS" ]
+                    , li [] [ text "Elm" ]
+                    ]
+                ]
+            , li [] [ text "Middleware Development" ]
+            , li [] [ text "Network Operations" ]
             ]
         ]
