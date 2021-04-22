@@ -39,7 +39,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 90%;
 }
 
@@ -48,7 +48,6 @@ body {
     /* for larger devices */
     .card-tile {
         min-width: max(50%, 320px);
-        max-width: max(50%, 320px);
         flex: 1;
     }
     .card-tile-base {
@@ -56,14 +55,21 @@ body {
     }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1400px) {
     .card-tile {
         min-width: max(33.33%, 320px);
+        flex: 0;
+        /*
+        min-width: min(50%, 320px);
         max-width: max(33.33%, 320px);
+        min-width: max(33.33%, 320px);
+        width: max(33.33%, 320px);
+        */
     }
     .card-tile-base {
         width: 70%;
         max-width: 1300px;
+        justify-items: center;
     }
 }
 
