@@ -59,12 +59,6 @@ body {
     .card-tile {
         min-width: max(33.33%, 320px);
         flex: 0;
-        /*
-        min-width: min(50%, 320px);
-        max-width: max(33.33%, 320px);
-        min-width: max(33.33%, 320px);
-        width: max(33.33%, 320px);
-        */
     }
     .card-tile-base {
         width: 70%;
