@@ -19,7 +19,7 @@ type Page
 view : Page -> { title : String, content : Html msg } -> Document msg
 view page { title, content } =
     { title = title
-    , body = [ content ]
+    , body = [ viewHeader, content, viewFooter ]
     }
 
 viewHeader : Html msg
@@ -27,22 +27,20 @@ viewHeader =
     header
         [ class Style "page-header-container" ]
         [ logo
-        , headerMenuLink [] None [ text "MENU " ]
-        , hiddenMenu []
         ]
 
 
 headerMenuLink : List (Attribute msg) -> Route -> List (Html msg) -> Html msg
 headerMenuLink attrs route =
-    a <| attrs ++ [ class Style "page-header-child", href route ]
+    a <| attrs ++ [ href route ]
 
 
 logo : Html msg
 logo = 
-    headerMenuLink
-        [ class Style "page-header-logo-container" ]
-        Route.Home
-        [ img [ src "/logo.svg", class Style "page-header-logo" ] [] ]
+    span [ class Style "page-header-logo-container"  ]
+        [ headerMenuLink [] Route.Home
+            [ img [ src "/logo.svg", class Style "page-header-logo", Attr.alt "logo of Hiragana MA" ] [] ]
+        ]
 
 
 
@@ -59,4 +57,8 @@ viewFooter : Html msg
 viewFooter = 
     footer
         [ class Style "page-footer-container" ]
-        [ small [ class Style "page-footer-child" ] [ text "footer" ] ]
+        [ small [class Style "flex-container"]
+            [ span [ id Style "page-footer-copyright" ] [ text "2021 kino-ma" ]
+            , a [ Attr.href "https://github.com/kino-ma/www.kino.ma", class Style "page-footer-source" ] [ text "page source" ]
+            ]
+        ]
