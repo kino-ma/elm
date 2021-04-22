@@ -1,6 +1,9 @@
-#!/usr/bin/env sh
+#!/bin/bash
+
+set -e
+
 echo "deploying..."
 
-git pull \
-    && RELEASE=true make \
-    && echo "deployed"
+git pull
+docker-compose up
+echo "deployed"

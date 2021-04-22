@@ -16,18 +16,26 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
+      PROJ_NAME: "www.kino.ma"
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       SSH_USER: ${{ secrets.SSH_USER }}
       SSH_ADDR: ${{ secrets.SSH_HOST }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
-      - name: pull and deploy
+      - name: put secret key
         run: |
               echo "$SECRET_KEY" > secret_key
               chmod 600 secret_key
-              ssh -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_ADDR} -i secret_key "cd elm-web && ./deploy.sh"
+
+      - name: deploy
+        run: |
+              ssh \
+                -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_ADDR} \
+                -i secret_key \
+                -p ${SSH_PORT} \
+                "cd projects/${PROJ_NAME} && ./deploy.sh"
