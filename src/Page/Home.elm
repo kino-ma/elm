@@ -1,11 +1,10 @@
 module Page.Home exposing (..)
 
+import Css exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attr exposing (href, rel)
-import Url
-
-import Css exposing (..)
 import Session exposing (Session)
+import Url
 
 
 type alias Model =
@@ -26,16 +25,16 @@ init session =
             , message = "/"
             }
     in
-    (model, Cmd.none)
+    ( model, Cmd.none )
 
 
-view : Model -> { title: String, content: Html msg }
+view : Model -> { title : String, content : Html msg }
 view model =
     { title = "Welcome to kino.ma"
-    , content = 
+    , content =
         main_ [ class Style "main-content", class Style "flex-container-center" ]
             [ h1 [ id Style "main-heading" ] [ text "kino-ma" ]
-            , div [ class Style "card-tile-base"]
+            , div [ class Style "card-tile-base" ]
                 [ cardDescription
                 , cardOrganizations
                 , cardInterested
@@ -52,11 +51,12 @@ view model =
 cardTile : List (Attribute msg) -> String -> List (Html msg) -> Html msg
 cardTile attrs title content =
     div
-        (attrs ++ [ class Style "card-tile"])
-        (( h2
+        (attrs ++ [ class Style "card-tile" ])
+        (h2
             [ class Style "tile-heading", Attr.id title ]
-            [ a [ class Style "tile-heading-link", href ("#" ++ title) ] [text title]])
-            :: content)
+            [ a [ class Style "tile-heading-link", href ("#" ++ title) ] [ text title ] ]
+            :: content
+        )
 
 
 cardText : String -> Html msg
@@ -66,20 +66,24 @@ cardText content =
         [ text content ]
 
 
-cardTextMultiLine : List (String) -> Html msg
+cardTextMultiLine : List String -> Html msg
 cardTextMultiLine contents =
     let
         concatLines a bs =
-            if not (List.isEmpty bs)
-                then a :: br [] [] :: bs
-                else a :: bs
+            if not (List.isEmpty bs) then
+                a :: br [] [] :: bs
+
+            else
+                a :: bs
+
         multiLine2text =
-            List.foldr concatLines [] <<
-                List.map text
+            List.foldr concatLines []
+                << List.map text
     in
     p
         [ class Style "card-content" ]
-        <| multiLine2text contents
+    <|
+        multiLine2text contents
 
 
 meLinkListItems : List (Html msg) -> Html msg
@@ -99,20 +103,22 @@ toSession model =
 
 cardDescription : Html msg
 cardDescription =
-    cardTile [] "About"
+    cardTile []
+        "About"
         [ cardTextMultiLine
             [ "牧野青希, Seiki Makino"
-            , "慶應義塾大学環境情報学部　2019年度入学"
+            , "慶應義塾大学環境情報学部\u{3000}2019年度入学"
             ]
         ]
 
 
 cardOrganizations : Html msg
 cardOrganizations =
-    cardTile [] "Organizations"
+    cardTile []
+        "Organizations"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li []
-                [ a [ href "https://rg.sfc.wide.ad.jp" ] [ text "慶應大学 徳田・村井合同研究室" ]
+                [ a [ href "https://rg.sfc.keio.ac.jp" ] [ text "慶應大学 徳田・村井合同研究室" ]
                 , ul []
                     [ li [] [ a [ href "https://www.jn.sfc.keio.ac.jp" ] [ text "中澤研究会" ] ]
                     , li [] [ a [ href "https://rgroot.sfc.wide.ad.jp/" ] [ text "植原研究会" ] ]
@@ -126,7 +132,8 @@ cardOrganizations =
 
 cardInterested : Html msg
 cardInterested =
-    cardTile [] "Interested"
+    cardTile []
+        "Interested"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [ text "Operating Systems" ]
             , li [] [ text "Networking" ]
@@ -139,11 +146,12 @@ cardInterested =
 
 
 cardLinks : Html msg
-cardLinks = 
-    cardTile [] "Links"
+cardLinks =
+    cardTile []
+        "Links"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ meLinkListItems [ aChild "https://twitter.kino.ma" [] "Twitter" ]
-            , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [rel "me"] "Mastodon" ]
+            , meLinkListItems [ aChild "https://mastodon.kino.ma/@makino" [ rel "me" ] "Mastodon" ]
             , meLinkListItems [ aChild "https://github.com/kino-ma" [] "GitHub" ]
             , meLinkListItems [ aChild "https://www.amazon.jp/hz/wishlist/ls/3I4HKWWH6OJWD?ref_=wl_share" [] "Hoshi imo" ]
             ]
@@ -151,8 +159,9 @@ cardLinks =
 
 
 cardAwards : Html msg
-cardAwards = 
-    cardTile [] "Awards"
+cardAwards =
+    cardTile []
+        "Awards"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [ text "Hack U SFC 2019 最優秀賞" ]
             , li [] [ text "Open Hack U 2020 Online Vol.2 最優秀賞" ]
@@ -161,14 +170,16 @@ cardAwards =
                 [ a
                     [ Attr.href "https://twitter.com/search?q=%23%E3%81%B0%E3%81%AB%E3%81%97%E3%81%87%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%86" ]
                     [ text "#ばにしぇを作ろう" ]
-                , text " 最優秀賞" ]
+                , text " 最優秀賞"
+                ]
             ]
         ]
 
 
 cardProducts : Html msg
-cardProducts = 
-    cardTile [] "Products"
+cardProducts =
+    cardTile []
+        "Products"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li [] [ a [ href "https://github.com/pj-aias" ] [ text "匿名認証システム AIAS" ] ]
             , li [] [ a [ href "https://www.slideshare.net/kino___ma/neopanopticon-hacku-sfc-2019-201816573" ] [ text "魔法のSNS Neo-Panopticon" ] ]
@@ -179,8 +190,9 @@ cardProducts =
 
 
 cardLanguages : Html msg
-cardLanguages = 
-    cardTile [] "Languages"
+cardLanguages =
+    cardTile []
+        "Languages"
         [ ol [ class Style "card-content", class Style "language-list" ]
             [ li [] [ text "Rust" ]
             , li [] [ text "Python" ]
@@ -197,8 +209,9 @@ cardLanguages =
 
 
 cardSkills : Html msg
-cardSkills = 
-    cardTile [] "Skills"
+cardSkills =
+    cardTile []
+        "Skills"
         [ ul [ class Style "card-content", class Style "general-list" ]
             [ li []
                 [ text "Server-Side Development"
