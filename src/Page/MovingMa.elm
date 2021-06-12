@@ -38,8 +38,8 @@ view : Model -> Page.View Msg
 view model =
     { title = "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨"
     , content =
-        Html.div [ class MovingMa "" ]
-            [ Html.img [ Attr.src "https://www.kino.ma/ma.jpg", Attr.width 256, class MovingMa "moving-ma" ] [ text "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨" ]
+        Html.div [ class MovingMa "moving-ma" ]
+            [ Html.img [ Attr.src "https://www.kino.ma/ma.jpg", Attr.width 256, Attr.alt "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨" ] []
             ]
     , fullScreen = True
     }
