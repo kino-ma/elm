@@ -19,6 +19,11 @@ type alias Msg =
     ()
 
 
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
+
+
 init : Session -> ( Model, Cmd Msg )
 init session =
     let

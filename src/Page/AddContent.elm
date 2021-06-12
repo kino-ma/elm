@@ -88,3 +88,8 @@ toSession model =
         { session } = model
     in 
     session
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
