@@ -17,10 +17,17 @@ type Page
     | Other
 
 
-view : Page -> { title : String, content : Html msg } -> Document msg
-view page { title, content } =
+type alias View msg = { title : String, content : Html msg, fullScreen : Bool }
+
+
+view : Page -> View msg -> Document msg
+view page { title, content, fullScreen } =
     { title = title
-    , body = [ viewHeader, content, viewFooter ]
+    , body =
+        if fullScreen then
+            [ content ]
+        else
+            [ viewHeader, content, viewFooter ]
     }
 
 viewHeader : Html msg

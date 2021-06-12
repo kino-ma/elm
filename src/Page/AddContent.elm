@@ -5,6 +5,7 @@ import Html exposing (..)
 import Html.Attributes exposing (value, type_, placeholder)
 import Html.Events exposing (onInput, onClick)
 
+import Page exposing (View)
 import Css exposing (..)
 import Session exposing (Session)
 
@@ -59,7 +60,7 @@ update msg model =
 
 
 
-view : Model -> { title: String, content: Html Msg }
+view : Model -> View Msg
 view model =
     { title = ""
     , content = div [ class Style "root" ]
@@ -77,6 +78,7 @@ view model =
             [ button [ onClick Reset ] [ text "reset result content" ]
             ]
         ]
+    , fullScreen = False
     }
 
 
