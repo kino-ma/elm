@@ -38,7 +38,7 @@ view _ =
     { title = "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨"
     , content =
         Html.div [ class MovingMa "moving-ma" ]
-            [ Html.img [ Attr.src "https://www.kino.ma/ma.jpg", Attr.width 256, Attr.alt "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨" ] []
+            [ Html.img [ Attr.src "https://www.kino.ma/ma.jpg", Attr.width 128, Attr.alt "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨" ] []
             ]
     , fullScreen = True
     }

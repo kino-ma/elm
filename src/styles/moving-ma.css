@@ -1,5 +1,5 @@
 .moving-ma {
-    height: calc(256px * 3);
+    height: 256px;
     display: flex;
     align-items: center;
     transform: translateX(100%);
@@ -8,7 +8,7 @@
 
 @keyframes bound {
     0% {
-        transform: translateX(calc(100% - 256px));
+        transform: translateX(calc(100% - 128px));
     }
     100% {
         transform: translateX(0);
