@@ -1,7 +1,7 @@
 module Route exposing (..)
 
 import Url exposing (Url)
-import Url.Parser as Parser exposing (Parser, (</>), int, map, oneOf, s, string)
+import Url.Parser as Parser exposing (Parser, (</>), oneOf, s)
 import Html exposing (Attribute)
 import Html.Attributes as Attr
 
@@ -9,6 +9,7 @@ import Html.Attributes as Attr
 type Route 
     = Home
     | AddContent
+    | MovingMa
     | None
 
 
@@ -17,6 +18,7 @@ parser =
     oneOf
         [ Parser.map Home Parser.top
         , Parser.map AddContent (s "add_content")
+        , Parser.map MovingMa (s "moving-ma")
         ]
 
 
@@ -43,6 +45,9 @@ routeToPieces page =
 
         AddContent ->
             [ "add_content" ]
+
+        MovingMa ->
+            [ "moving-ma" ]
 
         None ->
             []
