@@ -1,6 +1,5 @@
 module Page.AddContent exposing (..)
 
-import Browser
 import Html exposing (..)
 import Html.Attributes exposing (value, type_, placeholder)
 import Html.Events exposing (onInput, onClick)

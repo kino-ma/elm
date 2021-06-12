@@ -1,13 +1,13 @@
 module Page exposing (..)
 
 import Html exposing (..)
-import Html.Attributes as Attr exposing (style, src)
+import Html.Attributes as Attr exposing (src)
 import Browser exposing (Document)
 
 import Css exposing (..)
 import Session exposing (..)
 import Route exposing (..)
-import Html.Events exposing (onClick)
+import Html.Events
 
 
 type Page

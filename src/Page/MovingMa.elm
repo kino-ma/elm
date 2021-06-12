@@ -2,10 +2,9 @@ module Page.MovingMa exposing (..)
 
 import Css exposing (..)
 import Html exposing (..)
-import Html.Attributes as Attr exposing (style)
+import Html.Attributes as Attr
 import Page
 import Session exposing (Session)
-import Url
 
 
 type alias Model =
@@ -35,7 +34,7 @@ init session =
 
 
 view : Model -> Page.View Msg
-view model =
+view _ =
     { title = "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨"
     , content =
         Html.div [ class MovingMa "moving-ma" ]
@@ -43,11 +42,6 @@ view model =
             ]
     , fullScreen = True
     }
-
-
-pos : Model -> String
-pos model =
-    String.fromInt model.x
 
 
 subscriptions : Model -> Sub Msg

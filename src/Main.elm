@@ -4,8 +4,8 @@ import Browser exposing (Document)
 import Browser.Navigation as Nav
 import Css exposing (..)
 import Html exposing (..)
-import Html.Attributes exposing (href, rel, src, style)
-import Page exposing (Page)
+import Html.Attributes exposing (href)
+import Page
 import Page.AddContent as AddContent
 import Page.Blank as Blank
 import Page.Home as Home
@@ -13,7 +13,7 @@ import Page.MovingMa as MovingMa
 import Route exposing (Route)
 import Session exposing (..)
 import Url
-import Url.Parser exposing ((</>), Parser, int, map, oneOf, s, string)
+import Url.Parser exposing ((</>))
 
 
 main : Program () Model Msg
@@ -36,7 +36,7 @@ type Model
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
-init flags url key =
+init _ url key =
     (changeRouteTo <| Route.fromUrl url) <| Redirect (Session.fromKey key) url
 
 
@@ -122,7 +122,7 @@ toSession model =
 
 
 updateWith : (subModel -> Model) -> (subMsg -> Msg) -> Model -> ( subModel, Cmd subMsg ) -> ( Model, Cmd Msg )
-updateWith toModel toMsg model ( subModel, subCmd ) =
+updateWith toModel toMsg _ ( subModel, subCmd ) =
     ( toModel subModel
     , Cmd.map toMsg subCmd
     )
@@ -172,6 +172,6 @@ view model =
             viewPage Page.MovingMa GotMovingMaMsg <|
                 MovingMa.view subModel
 
-        Redirect key url ->
+        Redirect _ _ ->
             viewPage Page.AddContent GotAddContentMsg <|
                 Blank.view
