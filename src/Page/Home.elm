@@ -4,6 +4,7 @@ import Html exposing (..)
 import Html.Attributes as Attr exposing (href, rel)
 import Url
 
+import Page
 import Css exposing (..)
 import Session exposing (Session)
 
@@ -18,6 +19,11 @@ type alias Msg =
     ()
 
 
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
+
+
 init : Session -> ( Model, Cmd Msg )
 init session =
     let
@@ -29,7 +35,7 @@ init session =
     (model, Cmd.none)
 
 
-view : Model -> { title: String, content: Html msg }
+view : Model -> Page.View Msg
 view model =
     { title = "Welcome to kino.ma"
     , content = 
@@ -46,6 +52,7 @@ view model =
                 , cardSkills
                 ]
             ]
+    , fullScreen = False
     }
 
 

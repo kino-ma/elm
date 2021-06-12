@@ -1,0 +1,16 @@
+.moving-ma {
+    height: 256px;
+    display: flex;
+    align-items: center;
+    transform: translateX(100%);
+    animation: bound 2s linear infinite alternate;
+}
+
+@keyframes bound {
+    0% {
+        transform: translateX(calc(100% - 128px));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

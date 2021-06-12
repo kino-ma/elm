@@ -1,10 +1,13 @@
 module Page.Blank exposing (view)
 
-import Html exposing (Html)
+import Html
+
+import Page
 
 
-view : { title : String, content : Html msg }
+view : Page.View msg
 view =
     { title = ""
     , content = Html.text ""
+    , fullScreen = True
     }

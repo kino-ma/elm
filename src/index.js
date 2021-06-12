@@ -2,6 +2,7 @@
 
 require('./index.html');
 require('./styles/style.css')
+require('./styles/moving-ma.css')
 
 var Elm = require('./Main.elm').Elm;
 
