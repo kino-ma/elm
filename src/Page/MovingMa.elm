@@ -1,12 +1,11 @@
 module Page.MovingMa exposing (..)
 
+import Css exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attr exposing (style)
-import Url
-
 import Page
-import Css exposing (..)
 import Session exposing (Session)
+import Url
 
 
 type alias Model =
@@ -24,8 +23,6 @@ toSession model =
     model.session
 
 
-
-
 init : Session -> ( Model, Cmd Msg )
 init session =
     let
@@ -34,13 +31,16 @@ init session =
             , x = 0
             }
     in
-    (model, Cmd.none)
+    ( model, Cmd.none )
 
 
 view : Model -> Page.View Msg
 view model =
     { title = "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨"
-    , content = Html.p [ style "text-align" "center", style "left" (pos model) ] [ text "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨" ]
+    , content =
+        Html.div [ class MovingMa "moving-ma" ]
+            [ Html.p [] [ text "𝑴𝒐𝒗𝒊𝒏𝒈 𝑴𝑨" ]
+            ]
     , fullScreen = True
     }
 
