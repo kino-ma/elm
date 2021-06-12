@@ -3,7 +3,7 @@ module Page.Home exposing (..)
 import Css exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attr exposing (href, rel)
-
+import Page
 import Session exposing (Session)
 import Url
 
