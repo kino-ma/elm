@@ -13,6 +13,7 @@ import Html.Events exposing (onClick)
 type Page
     = Home
     | AddContent
+    | MovingMa
     | Other
 
 

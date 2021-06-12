@@ -9,6 +9,7 @@ import Html.Attributes as Attr
 type Route 
     = Home
     | AddContent
+    | MovingMa
     | None
 
 
@@ -17,6 +18,7 @@ parser =
     oneOf
         [ Parser.map Home Parser.top
         , Parser.map AddContent (s "add_content")
+        , Parser.map MovingMa (s "moving-ma")
         ]
 
 
@@ -43,6 +45,9 @@ routeToPieces page =
 
         AddContent ->
             [ "add_content" ]
+
+        MovingMa ->
+            [ "moving-ma" ]
 
         None ->
             []

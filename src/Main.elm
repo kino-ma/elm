@@ -12,6 +12,7 @@ import Route exposing (Route)
 import Session exposing (..)
 import Page exposing (Page)
 import Page.AddContent as AddContent
+import Page.MovingMa as MovingMa
 import Page.Home as Home
 import Page.Blank as Blank
 
@@ -33,6 +34,7 @@ type Model
     = Redirect Session Url.Url
     | Home Home.Model
     | AddContent AddContent.Model
+    | MovingMa MovingMa.Model
 
 
 
@@ -44,6 +46,7 @@ init flags url key =
 type Msg
     = GotAddContentMsg AddContent.Msg
     | GotHomeMsg Home.Msg
+    | GotMovingMaMsg MovingMa.Msg
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
 
@@ -61,6 +64,10 @@ changeRouteTo maybeRoute model =
         Just Route.AddContent ->
             updateWith AddContent GotAddContentMsg model
                 <| AddContent.init session
+
+        Just Route.MovingMa ->
+            updateWith MovingMa GotMovingMaMsg model
+                <| MovingMa.init session
 
         Just Route.None ->
             (model, Cmd.none)
@@ -108,6 +115,9 @@ toSession model =
         AddContent subModel ->
             AddContent.toSession subModel
 
+        MovingMa subModel ->
+            MovingMa.toSession subModel
+
         Redirect session _ ->
             session
 
@@ -144,6 +154,10 @@ view model =
         AddContent subModel ->
             viewPage Page.AddContent GotAddContentMsg
                 <| AddContent.view subModel 
+        
+        MovingMa subModel ->
+            viewPage Page.MovingMa GotMovingMaMsg
+                <| MovingMa.view subModel 
         
         Redirect key url->
             viewPage Page.AddContent GotAddContentMsg
