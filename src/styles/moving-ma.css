@@ -1,9 +1,14 @@
-.moving-ma {
+.bounding-ma {
     height: 256px;
     display: flex;
     align-items: center;
     transform: translateX(100%);
     animation: bound 2s linear infinite alternate;
+}
+
+.rotating-ma {
+    transform: rotate(0deg);
+    animation: rotate 1.3s linear infinite;
 }
 
 @keyframes bound {
@@ -12,5 +17,14 @@
     }
     100% {
         transform: translateX(0);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg)
     }
 }
