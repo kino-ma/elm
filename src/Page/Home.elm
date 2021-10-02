@@ -194,7 +194,7 @@ cardProducts =
             , li [] [ a [ href "https://www.slideshare.net/kino___ma/neopanopticon-hacku-sfc-2019-201816573" ] [ text "魔法のSNS Neo-Panopticon" ] ]
             , li [] [ a [ href "https://speakerdeck.com/yosh1/hack-day-2021-maigo" ] [ text "人探しサービス MAIGO" ] ]
             , li [] [ a [ href "https://github.com/kino-ma/qcure" ] [ text "ドメイン固有言語 qcure [wip]" ] ]
-            , li [] [ a [ href "https://github.com/kino-ma/makra" ] [ text "組み込み機器向け WebAssembl ランタイム makra [wip]" ] ]
+            , li [] [ a [ href "https://github.com/kino-ma/makra" ] [ text "組み込み機器向け WebAssembly ランタイム makra [wip]" ] ]
             , li [] [ a [ href "https://github.com/makino-makino/neo-polling" ] [ text "匿名アンケートシステム ねおぼーと" ] ]
             ]
         ]
