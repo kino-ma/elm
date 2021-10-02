@@ -180,6 +180,8 @@ cardAwards =
                 , text " 最優秀賞"
                 ]
             ]
+        , li [] [ text "ICTSC 2021 夏の陣 準優勝" ]
+        , li [] [ text "Digital Hack Day 2021 Acompany 賞" ]
         ]
 
 
