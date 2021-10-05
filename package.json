@@ -14,8 +14,7 @@
     "loader-utils": "1.1.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.23.0",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.5.0"
   },
   "resolution": {
     "glob-parent": "^5.1.2"
@@ -25,5 +24,8 @@
     "watch": "webpack --mode development --watch",
     "dev": "webpack serve --mode development",
     "errors": "webpack --mode development --display-error-details"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^4.3.1"
   }
 }
