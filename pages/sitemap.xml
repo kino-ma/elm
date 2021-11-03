@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 <url>
-  <loc>https://kino.ma/</loc>
+  <loc>https://www.kino.ma/</loc>
   <priority>1.0</priority>
-  <lastmod>2020-07-31T00:09:21+09:00</lastmod>
+  <lastmod>2021-03-26T01:15:16+09:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://kino.ma/add_content.html</loc>
+  <loc>https://www.kino.ma/add_content</loc>
   <priority>1.0</priority>
-  <lastmod>2020-07-31T00:09:21+09:00</lastmod>
+  <lastmod>2021-03-26T01:15:16+09:00</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://www.kino.ma/moving-ma</loc>
+  <priority>1.0</priority>
+  <lastmod>2021-06-12T18:00:00+09:00</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 

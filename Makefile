@@ -14,6 +14,12 @@ default: all
 build:
 	yarn run build
 
+dev-server:
+	docker-compose run -p 3001:3001 app yarn dev
+
+prod-test-server:
+	python -m http.server --directory dist 3001
+
 $(OUT_DIR)/index.html: $(SRC_DIR)/Main.elm
 	npx elm make $(ELM_FLAGS) $< --output=$@
 

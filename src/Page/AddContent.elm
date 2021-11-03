@@ -1,10 +1,10 @@
 module Page.AddContent exposing (..)
 
-import Browser
 import Html exposing (..)
 import Html.Attributes exposing (value, type_, placeholder)
 import Html.Events exposing (onInput, onClick)
 
+import Page exposing (View)
 import Css exposing (..)
 import Session exposing (Session)
 
@@ -59,9 +59,9 @@ update msg model =
 
 
 
-view : Model -> { title: String, content: Html Msg }
+view : Model -> View Msg
 view model =
-    { title = ""
+    { title = "Add string to the start or the end of content"
     , content = div [ class Style "root" ]
         [ h1 [class Style "header" ] [ text model.result ]
         , div [ class Style "container" ]
@@ -77,6 +77,7 @@ view model =
             [ button [ onClick Reset ] [ text "reset result content" ]
             ]
         ]
+    , fullScreen = False
     }
 
 
@@ -86,3 +87,8 @@ toSession model =
         { session } = model
     in 
     session
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none

@@ -27,12 +27,15 @@ subStyle = generateStyle
 
 type Css
     = Style
+    | MovingMa
 
 cssPrefix : Css -> String
 cssPrefix css =
     case css of 
         Style -> 
             "style__"
+        MovingMa ->
+            "moving-ma__"
 
 
 className : Css -> String -> String
@@ -52,3 +55,8 @@ classList : Css -> List ( String, Bool ) -> Attribute msg
 classList css ls =
     Attributes.classList <|
         List.map (Tuple.mapFirst (className css)) ls
+        
+
+id : Css -> String -> Attribute msg
+id css name = 
+    Attributes.id <| className css name
