@@ -1,35 +1,17 @@
-ELM_FLAGS :=
-SRC_DIR := src
-ELM_SRCS := $(wildcard $(SRC_DIR)/*)
-OUT_DIR := pages
-TARGETS := $(OUT_DIR)/index.html $(OUT_DIR)/add_content.html
+OUTDIR := dist
 
-ifdef RELEASE
-	ELM_FLAGS += --optimize
-endif
-
-
-default: all
+default: build
 
 build:
-	yarn run build
+	docker-compose up
 
-dev-server:
+dev:
 	docker-compose run -p 3001:3001 app yarn dev
 
-prod-test-server:
-	python -m http.server --directory dist 3001
-
-$(OUT_DIR)/index.html: $(SRC_DIR)/Main.elm
-	npx elm make $(ELM_FLAGS) $< --output=$@
-
-$(OUT_DIR)/add_content.html: $(SRC_DIR)/AddContent.elm
-	npx elm make $(ELM_FLAGS) $< --output=$@
-
-
-all: $(TARGETS)
+test-server:
+	python3 -m http.server --directory $(OUTDIR) 8080
 
 clean:
-	rm -rf $(TARGETS)
+	rm -rf $(OUTDIR)
 
-.PHONY: default all release clean
+.PHONY: default build clean dev test-server
