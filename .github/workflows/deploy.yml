@@ -36,5 +36,6 @@ jobs:
       - name: deploy
         run: |
               ssh \
-                "${SSH_USER}@${SSH_ADDR}:${SSH_PORT}" \
+                "${SSH_USER}@${SSH_ADDR}" \
+                -p "${SSH_PORT}" \
                 "cd projects/${PROJ_NAME} && ./deploy.sh"
