@@ -34,7 +34,7 @@ jobs:
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
       - name: Adding Known Hosts
-        run: ssh-keyscan -H "${SSH_HOST}" >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H "${SSH_HOST}" -p "${SSH_PORT}" >> ~/.ssh/known_hosts
 
       - name: deploy
         run: |
