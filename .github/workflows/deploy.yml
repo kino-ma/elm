@@ -6,7 +6,7 @@ name: CI
 # events but only for the develop branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master, feature/pack-static ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,15 +27,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: put secret key
-        run: |
-              echo "$SECRET_KEY" > secret_key
-              chmod 600 secret_key
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: "${SECRET_KEY}"
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
       - name: deploy
         run: |
               ssh \
-                -oStrictHostKeyChecking=no ${SSH_USER}@${SSH_ADDR} \
-                -i secret_key \
-                -p ${SSH_PORT} \
+                "${SSH_USER}@${SSH_ADDR}:${SSH_PORT}" \
                 "cd projects/${PROJ_NAME} && ./deploy.sh"
