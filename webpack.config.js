@@ -6,15 +6,9 @@ var elmSoruce = __dirname;
 
 module.exports = {
     devServer: {
-        contentBase: [
-            path.join(__dirname, './src'),
-            path.join(__dirname, './dist'),
-        ],
         hot: true,
         host: "0.0.0.0",
         port: 3001,
-        inline: true,
-        watchContentBase: true,
         historyApiFallback: true,
     },
     plugins: [
