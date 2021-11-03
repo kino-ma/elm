@@ -27,11 +27,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: "${SECRET_KEY}"
-          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      - name: put secret key
+        run: |
+              echo "${SECRET_KEY}" > secret_key
+              chmod 600 secret_key
 
       - name: deploy
         run: |
@@ -39,5 +38,6 @@ jobs:
                 "${SSH_HOST}" \
                 -l "${SSH_USER}" \
                 -p "${SSH_PORT}" \
-                -o StrictHostKeyChecking=no \
+                -i 'secret_key' \
+                -o 'StrictHostKeyChecking=no' \
                 "cd projects/${PROJ_NAME} && ./deploy.sh"
