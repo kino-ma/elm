@@ -6,4 +6,5 @@ echo "deploying..."
 
 git pull
 docker-compose up --build
+
 echo "deployed"
