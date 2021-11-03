@@ -5,6 +5,5 @@ set -e
 echo "deploying..."
 
 git pull
-docker-compose up
-cp dist/* pages
+docker-compose up --build
 echo "deployed"
