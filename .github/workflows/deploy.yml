@@ -33,13 +33,11 @@ jobs:
           key: "${SECRET_KEY}"
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
-      - name: Adding Known Hosts
-        run: ssh-keyscan -p "${SSH_PORT}" -H "${SSH_HOST}" >> ~/.ssh/known_hosts
-
       - name: deploy
         run: |
               ssh \
                 "${SSH_HOST}" \
                 -l "${SSH_USER}" \
                 -p "${SSH_PORT}" \
+                -o StrictHostKeyChecking=no \
                 "cd projects/${PROJ_NAME} && ./deploy.sh"
