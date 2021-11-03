@@ -19,7 +19,7 @@ jobs:
       PROJ_NAME: "www.kino.ma"
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       SSH_USER: ${{ secrets.SSH_USER }}
-      SSH_ADDR: ${{ secrets.SSH_HOST }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
       SSH_PORT: ${{ secrets.SSH_PORT }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -34,11 +34,11 @@ jobs:
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
 
       - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.DEV_DEPLOY_SSH_HOST }} >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H "${SSH_HOST}" >> ~/.ssh/known_hosts
 
       - name: deploy
         run: |
               ssh \
-                "${SSH_USER}@${SSH_ADDR}" \
+                "${SSH_USER}@${SSH_HOST}" \
                 -p "${SSH_PORT}" \
                 "cd projects/${PROJ_NAME} && ./deploy.sh"
